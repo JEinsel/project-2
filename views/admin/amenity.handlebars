@@ -1,0 +1,59 @@
+
+<!-- Amenities list -->
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    Amenities
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered"  width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Amenity</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th id="save_btn_placeholder">Amenity</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </tfoot>
+        <tbody>
+
+          <td>
+            <table class="table"  width="100%" cellspacing="0">
+              <tr>
+            <td>ID:</td>
+            <td id="amenity_id">{{ results.id }}</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td id="amenity_name">{{ results.name }}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td id="amenity_desc">{{ results.description }}</td>
+          </tr>
+          <tr>
+            <td>Photo</td>
+            <td id="amenity_img_td"><img src="{{ results.photo }}" class="img-thumbnail" id="amenity_img_url" width="250"></td>
+          </tr>
+          <tr>
+            <td>Premium</td>
+            <td id="amenity_premium">{{ results.premium }}</td>  
+          </tr>
+            </table>
+          </td>
+          <td><button class="btn btn-block btn-dark" id="edit_amenity">Edit</button></td>
+          <td><button class="btn btn-block btn-dark" id="delete_amenity">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
