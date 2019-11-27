@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS negym_db;
-CREATE DATABASE negym_db;
