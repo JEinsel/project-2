@@ -9,6 +9,15 @@ module.exports = function(sequelize, DataTypes) {
       },
       password: {
         type: DataTypes.TEXT
+      },
+      fName: {
+        type: DataTypes.STRING
+      },
+      lName: {
+        type: DataTypes.STRING
+      },
+      memberLvl: {
+        type: DataTypes.STRING
       }
     },
     {

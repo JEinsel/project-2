@@ -19,7 +19,7 @@ module.exports = function(passport) {
         usernameField: "email",
         passwordField: "password"
       },
-      function(email, password, cb) {
+      function(email, password,cb) {
         db.user.findOne({ where: { email: email } }).then(function(data) {
           if (data) {
             return cb(null, false, {
