@@ -55,11 +55,11 @@ $(document).ready(function() {
     `);
     $("#save_btn_placeholder").html(
       // eslint-disable-next-line quotes
-      `<button class="btn btn-block btn-dark" id="save">Save</button>`
+      `<button class="btn btn-block btn-dark" id="amenity_save">Save</button>`
     );
   });
   //saving edited object
-  $(document).on("click", "#save", function(event) {
+  $(document).on("click", "#amenity_save", function(event) {
     event.preventDefault();
     let editedAmenityObj = {
       name: $("#new_amenity_name")

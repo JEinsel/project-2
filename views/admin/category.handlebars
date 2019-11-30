@@ -1,0 +1,55 @@
+
+<!-- Categories list -->
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    Categories
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered"  width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th id="save_btn_placeholder">Category</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </tfoot>
+        <tbody>
+
+          <td>
+            <table class="table"  width="100%" cellspacing="0">
+              <tr>
+            <td>ID:</td>
+            <td id="category_id">{{ results.id }}</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td id="category_name">{{ results.name }}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td id="category_desc">{{ results.description }}</td>
+          </tr>
+          <tr>
+            <td>Photo</td>
+            <td id="category_img_td"><img src="{{ results.photo }}" class="img-thumbnail" id="category_img_url" width="250"></td>
+          </tr>
+            </table>
+          </td>
+          <td><button class="btn btn-block btn-dark" id="edit_category">Edit</button></td>
+          <td><button class="btn btn-block btn-dark" id="delete_category">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Last updated <span id="date"></span></div>
+</div>

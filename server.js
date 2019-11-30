@@ -20,10 +20,14 @@ app.set("view engine", "handlebars");
 const adminRoutes = require("./controller/admin/admin-controller");
 const amenitiesRoutes = require("./controller/admin/amenities-controller");
 const instructorsRoutes = require("./controller/admin/instructors-controller");
+const classesRoutes = require("./controller/admin/classes-controller");
+const catRoutes = require("./controller/admin/categories-controller");
 
 app.use(adminRoutes);
 app.use(amenitiesRoutes);
 app.use(instructorsRoutes);
+app.use(classesRoutes);
+app.use(catRoutes);
 
 // Routes
 const authRoutes = require("./controller/auth-controller");

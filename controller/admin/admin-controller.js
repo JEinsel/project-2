@@ -71,43 +71,6 @@ router.delete("/admin/members/:id", function(req, res) {
   }
 });
 
-//Classes routes
-router.get("/admin/classes", function(req, res) {
-  if (req.user) {
-    res.send("classes route");
-  } else {
-    res.redirect("/login");
-  }
-});
-router.get("/admin/classes/:id", function(req, res) {
-  if (req.user) {
-    res.send("classes ID route");
-  } else {
-    res.redirect("/login");
-  }
-});
-router.post("/admin/classes", function(req, res) {
-  if (req.user) {
-    res.send("classes post route");
-  } else {
-    res.redirect("/login");
-  }
-});
-router.put("/admin/classes/:id", function(req, res) {
-  if (req.user) {
-    res.send("classes update by ID route");
-  } else {
-    res.redirect("/login");
-  }
-});
-router.delete("/admin/classes/:id", function(req, res) {
-  if (req.user) {
-    res.send("classes update by ID route");
-  } else {
-    res.redirect("/login");
-  }
-});
-
 //Payments routes
 router.get("/admin/payments", function(req, res) {
   if (req.user) {

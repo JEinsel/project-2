@@ -1,0 +1,74 @@
+<!-- Categories list -->
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    Classes
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th id="save_btn_placeholder">Class</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </tfoot>
+        <tbody>
+
+          <td>
+            <table class="table" width="100%" cellspacing="0">
+              <tr>
+                <td>ID:</td>
+                <td id="class_id">{{ results.id }}</td>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td id="class_name">{{ results.name }}</td>
+              </tr>
+              <tr>
+                <td>Description</td>
+                <td id="class_desc">{{ results.description }}</td>
+              </tr>
+              <tr>
+                <td>Category</td>
+                <td>
+                  <select name="class_category" id="class_category" class="form-control"
+                    aria-describedby="categoryHelp" disabled>
+                    <option value="{{ results.CategoryId }}">{{ results.Category.name }}</option>
+                    {{#each categories}}
+                    <option value="{{ id }}">{{ name }}</option>
+                    {{/each}}
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Duration</td>
+                <td id="class_duration">{{ results.duration }}</td>
+              </tr>
+              <tr>
+                <td>Instensity</td>
+                <td id="class_intensity">{{ results.intensity }}</td>
+              </tr>
+              <tr>
+                <td>Price</td>
+                <td id="class_price">{{ results.price }}</td>
+              </tr>
+            </table>
+          </td>
+          <td><button class="btn btn-block btn-dark" id="edit_class">Edit</button></td>
+          <td><button class="btn btn-block btn-dark" id="delete_class">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Last updated <span id="date"></span></div>
+</div>
