@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     duration: {
       type: DataTypes.INTEGER,
-      defaultValue: "60"
+      defaultValue: 60
     },
     intensity: {
       type: DataTypes.STRING,
@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     price: {
       type: DataTypes.DECIMAL(10, 2),
-      defaultValue: "0.00"
+      defaultValue: 0.0
     }
   });
   Class.associate = function(models) {

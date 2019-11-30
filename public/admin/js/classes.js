@@ -35,7 +35,6 @@ $(document).ready(function() {
   $("#edit_class").on("click", function(event) {
     event.preventDefault();
     //saving old information in case don't want to edit some fields
-
     let oldClassObj = {
       name: $("#class_name").text(),
       description: $("#class_desc").text(),
@@ -51,9 +50,6 @@ $(document).ready(function() {
       <textarea type="text" name="new_class_desc" id="new_class_desc" class="form-control" rows="5">${oldClassObj.description}</textarea>
     `);
     $("#class_category").removeAttr("disabled");
-    /*   $("#class_category").html(`
-    <input type="text" value="${oldClassObj.CategoryId}" name="new_class_category" id="new_class_category" class="form-control">
-    `); */
     $("#class_duration").html(`
     <input type="text" value="${oldClassObj.duration}" name="new_class_duration" id="new_class_duration" class="form-control">
     `);

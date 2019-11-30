@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Instructor.associate = function(models) {
-    models.Instructor.hasMany(models.Member);
+    models.Instructor.hasMany(models.user);
   };
   return Instructor;
 };

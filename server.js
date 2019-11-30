@@ -1,6 +1,19 @@
 require("dotenv").config();
 const express = require("express");
 const exphbs = require("express-handlebars");
+const hbs = exphbs.create({
+  defaultLayout: "main",
+  //custom helper
+  helpers: {
+    ifEq: function(a, b, opts) {
+      if (a === b) {
+        return opts.fn(this);
+      } else {
+        return opts.inverse(this);
+      }
+    }
+  }
+});
 
 const db = require("./models");
 
@@ -13,7 +26,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Handlebars
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 //Admin routes

@@ -9,6 +9,16 @@ module.exports = function(sequelize, DataTypes) {
       },
       password: {
         type: DataTypes.TEXT
+      },
+      fName: {
+        type: DataTypes.STRING
+      },
+      lName: {
+        type: DataTypes.STRING
+      },
+      memberLvl: {
+        type: DataTypes.STRING,
+        defaultValue: 1
       }
     },
     {
@@ -16,6 +26,9 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true
     }
   );
+  User.associate = function(models) {
+    models.user.belongsTo(models.Instructor);
+  };
 
   User.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8));

@@ -45,12 +45,12 @@
   </div>
   <div class="card-footer small text-muted">Last updated <span id="date"></span></div>
 </div>
-
-<!-- Add new  -->
+{{#ifEq user.memberLvl '3'}}
+      <!-- Add new  -->
 <div class="card mb-3">
   <div class="card-header">
     <i class="fas fa-table"></i>
-    Add New Amenity
+    Add New Amenity: {{user.memberLvl}}
   </div>
   <div class="card-body">
     <form name="amenities_form" action="/admin/amenities" method="POST">
@@ -81,3 +81,4 @@
     </form>
   </div>
 </div>
+{{/ifEq}}

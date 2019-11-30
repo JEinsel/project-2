@@ -26,7 +26,8 @@ router.get("/admin/amenities", function(req, res) {
       res.render("admin/amenities", {
         layout: "admin",
         title: "Amenities",
-        results: dbAmenities
+        results: dbAmenities,
+        user: req.user
       });
     });
   } else {
