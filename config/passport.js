@@ -1,13 +1,13 @@
 const LocalStrategy = require("passport-local").Strategy;
 const db = require("../models");
 
-module.exports = function(passport) {
-  passport.serializeUser(function(user, cb) {
+module.exports = function (passport) {
+  passport.serializeUser(function (user, cb) {
     cb(null, user.id);
   });
 
-  passport.deserializeUser(function(id, cb) {
-    db.user.findOne({ where: { id: id } }).then(function(data) {
+  passport.deserializeUser(function (id, cb) {
+    db.user.findOne({ where: { id: id } }).then(function (data) {
       cb(null, data);
     });
   });
@@ -17,10 +17,11 @@ module.exports = function(passport) {
     new LocalStrategy(
       {
         usernameField: "email",
-        passwordField: "password"
+        passwordField: "password",
+        passReqToCallback: true
       },
-      function(email, password,cb) {
-        db.user.findOne({ where: { email: email } }).then(function(data) {
+      function (req, email, password, cb) {
+        db.user.findOne({ where: { email: email } }).then(function (data) {
           if (data) {
             return cb(null, false, {
               message: "Oops! Email already signed-up."
@@ -29,9 +30,11 @@ module.exports = function(passport) {
             db.user
               .create({
                 email: email,
-                password: db.user.generateHash(password)
+                password: db.user.generateHash(password),
+                fName: req.body.fName,
+                lName: req.body.lName
               })
-              .then(function(data) {
+              .then(function (data) {
                 return cb(null, data);
               });
           }
@@ -47,8 +50,8 @@ module.exports = function(passport) {
         usernameField: "email",
         passwordField: "password"
       },
-      function(email, password, cb) {
-        db.user.findOne({ where: { email: email } }).then(function(data) {
+      function (email, password, cb) {
+        db.user.findOne({ where: { email: email } }).then(function (data) {
           if (!data) {
             return cb(null, false, { message: "No email found." });
           }

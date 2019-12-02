@@ -17,7 +17,8 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING
       },
       memberLvl: {
-        type: DataTypes.STRING
+        type: DataTypes.INTEGER,
+        defaultValue: 1
       }
     },
     {
