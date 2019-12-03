@@ -1,30 +1,18 @@
-<!-- Categories list -->
+<!-- Class -->
 <div class="card mb-3">
-  <div class="card-header">
-    <i class="fas fa-table"></i>
-    Classes
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <div>
+      <i class="fas fa-table"></i>
+      {{ title }}
+    </div>
+    <div id="save_btn_placeholder">
+      {{#ifMore user.memberLvl 5}}<button class="btn btn-dark" id="edit_class">Edit</button>{{/ifMore}}
+      {{#ifMore user.memberLvl 6}}<button class="btn btn-danger" id="delete_class">Delete</button>{{/ifMore}}
+    </div>
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <table class="table table-bordered" width="100%" cellspacing="0">
-        <thead>
-          <tr>
-            <th>Class</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <th id="save_btn_placeholder">Class</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </tfoot>
-        <tbody>
-
-          <td>
-            <table class="table" width="100%" cellspacing="0">
               <tr>
                 <td>ID:</td>
                 <td id="class_id">{{ results.id }}</td>
@@ -50,7 +38,7 @@
                 </td>
               </tr>
               <tr>
-                <td>Duration</td>
+                <td>Duration (min)</td>
                 <td id="class_duration">{{ results.duration }}</td>
               </tr>
               <tr>
@@ -62,12 +50,6 @@
                 <td id="class_price">{{ results.price }}</td>
               </tr>
             </table>
-          </td>
-          <td><button class="btn btn-block btn-dark" id="edit_class">Edit</button></td>
-          <td><button class="btn btn-block btn-dark" id="delete_class">Delete</button></td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
   <div class="card-footer small text-muted">Last updated <span id="date"></span></div>

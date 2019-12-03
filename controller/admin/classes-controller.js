@@ -8,7 +8,7 @@ const session = require("express-session");
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 3000000 },
     secret: "wootwoot"
   })
 );
@@ -20,86 +20,100 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 //Classes routes
+
+//Get all
 router.get("/admin/classes", function(req, res) {
-  if (req.user) {
+  if (req.user && req.user.memberLvl >= 4) {
+    let cats; //need it in order to create new classes, so i have my seect with lkist of cats
+    db.Category.findAll({}).then(function(result) {
+      cats = result;
+    });
+
+    db.Class.findAll({ include: [db.Category] }).then(function(result) {
+      res.render("admin/classes", {
+        layout: "admin",
+        title: "Classes",
+        results: result,
+        categories: cats,
+        user: req.user
+      });
+    });
+  } else {
+    res.redirect("/");
+  }
+});
+
+//Get one
+router.get("/admin/classes/:id", function(req, res) {
+  if (req.user && req.user.memberLvl >= 4) {
     let cats;
     db.Category.findAll({}).then(function(result) {
       cats = result;
     });
 
-    db.Class.findAll({ include: [db.Category] }).then(function(dbClasses) {
-      res.render("admin/classes", {
-        layout: "admin",
-        title: "Classes",
-        results: dbClasses,
-        categories: cats
-      });
-    });
-  } else {
-    res.redirect("/login");
-  }
-});
-router.get("/admin/classes/:id", function(req, res) {
-  if (req.user) {
-    let cats;
-    db.Category.findAll({}).then(function(result) {
-      cats = result;
-    });
     db.Class.findOne({
       include: [db.Category],
       where: {
         id: req.params.id
       }
-    }).then(function(dbClasses) {
-      //res.json(dbClasses);
+    }).then(function(result) {
       res.render("admin/class", {
         layout: "admin",
-        results: dbClasses,
-        categories: cats
+        title: result.name,
+        results: result,
+        categories: cats,
+        user: req.user
       });
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Post one
 router.post("/admin/classes", function(req, res) {
-  if (req.user) {
-    db.Class.create(req.body).then(function(postClasses) {
-      res.json(postClasses);
+  if (req.user && req.user.memberLvl >= 4) {
+    db.Class.create(req.body).then(function(result) {
+      res.json(result);
       res.redirect("/admin/classes");
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Update one
 router.put("/admin/classes/:id", function(req, res) {
-  if (req.user) {
+  if (req.user && req.user.memberLvl >= 4) {
     db.Class.update(req.body, {
       where: {
         id: req.params.id
       }
-    }).then(function(dbClasses) {
+    }).then(function(result) {
       res.render("admin/class", {
         layout: "admin",
-        results: dbClasses
+        results: result,
+        user: req.user
       });
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Delete one
 router.delete("/admin/classes/:id", function(req, res) {
-  if (req.user) {
+  if (req.user && req.user.memberLvl >= 4) {
     db.Class.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(dbClasses) {
-      res.json(dbClasses);
+    }).then(function(result) {
+      res.json(result);
       res.redirect("/admin/classes");
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
 

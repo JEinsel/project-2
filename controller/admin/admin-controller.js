@@ -4,11 +4,13 @@ const router = express.Router();
 const db = require("../../models");
 const flash = require("connect-flash");
 const session = require("express-session");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 3000000 },
     secret: "wootwoot"
   })
 );
@@ -21,67 +23,70 @@ router.use(passport.session());
 
 // Dashboard
 router.get("/admin", function(req, res) {
-  if (req.user) {
-    db.Example.findAll({}).then(function(dbExamples) {
+  if (req.user && req.user.memberLvl >= 4) {
+    db.Example.findAll({}).then(function(result) {
       res.render("admin/index", {
         layout: "admin",
         title: "Dashboard homepage",
-        results: dbExamples
+        results: result
       });
     });
   } else {
+    res.redirect("/");
+  }
+});
+
+//All admin users
+router.get("/admin/admins", function(req, res) {
+  if (req.user && req.user.memberLvl >= 4) {
+    db.user
+      .findAll({
+        where: {
+          memberLvl: {
+            [Op.gte]: 4
+          }
+        }
+      })
+      .then(function(result) {
+        res.render("admin/admins", {
+          layout: "admin",
+          title: "Admin users",
+          results: result
+        });
+      });
+  } else {
+    res.redirect("/");
+  }
+});
+
+//One admin user
+router.get("/admin/admins/:id", function(req, res) {
+  if (req.user && req.user.memberLvl >= 4) {
+    db.user
+      .findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(result) {
+        res.render("admin/admin", {
+          layout: "admin",
+          title: "Admin",
+          results: result
+        });
+      });
+  } else {
     res.redirect("/login");
   }
 });
 
-//Members routes
-router.get("/admin/members", function(req, res) {
-  if (req.user) {
-    res.send("members route");
-  } else {
-    res.redirect("/login");
-  }
-});
-router.get("/admin/members/:id", function(req, res) {
-  if (req.user) {
-    res.send("members ID route");
-  } else {
-    res.redirect("/login");
-  }
-});
-router.post("/members", function(req, res) {
-  if (req.user) {
-    res.send("members post route");
-  } else {
-    res.redirect("/login");
-  }
-});
-router.put("/admin/members/:id", function(req, res) {
-  if (req.user) {
-    res.send("members update by ID route");
-  } else {
-    res.redirect("/login");
-  }
-});
-router.delete("/admin/members/:id", function(req, res) {
-  if (req.user) {
-    res.send("members update by ID route");
-  } else {
-    res.redirect("/login");
-  }
-});
-
-//Payments routes
-router.get("/admin/payments", function(req, res) {
-  if (req.user) {
-    res.send("payments route");
-  } else {
-    res.redirect("/login");
-  }
-});
-router.get("/admin/payments/:id", function(req, res) {
-  if (req.user) {
-    res.send("payments ID route");
+//New admin user
+router.post("/admin/admins", function(req, res) {
+  if (req.user && req.user.memberLvl >= 4) {
+    db.admin.create(req.body).then(function(result) {
+      res.json(result);
+      res.redirect("/admin/admins");
+    });
   } else {
     res.redirect("/login");
   }

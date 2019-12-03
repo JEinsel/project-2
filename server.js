@@ -1,12 +1,27 @@
 require("dotenv").config();
 const express = require("express");
 const exphbs = require("express-handlebars");
+
 const hbs = exphbs.create({
   defaultLayout: "main",
   //custom helper
   helpers: {
     ifEq: function(a, b, opts) {
       if (a === b) {
+        return opts.fn(this);
+      } else {
+        return opts.inverse(this);
+      }
+    },
+    ifMore: function(a, b, opts) {
+      if (a >= b) {
+        return opts.fn(this);
+      } else {
+        return opts.inverse(this);
+      }
+    },
+    ifLess: function(a, b, opts) {
+      if (a <= b) {
         return opts.fn(this);
       } else {
         return opts.inverse(this);
@@ -35,19 +50,21 @@ const amenitiesRoutes = require("./controller/admin/amenities-controller");
 const instructorsRoutes = require("./controller/admin/instructors-controller");
 const classesRoutes = require("./controller/admin/classes-controller");
 const catRoutes = require("./controller/admin/categories-controller");
+const usersRoutes = require("./controller/admin/users-controller");
 
 app.use(adminRoutes);
 app.use(amenitiesRoutes);
 app.use(instructorsRoutes);
 app.use(classesRoutes);
 app.use(catRoutes);
+app.use(usersRoutes);
 
-// Routes
-const authRoutes = require("./controller/auth-controller");
+//Auth routes
 const userRoutes = require("./controller/user-controller");
+const authRoutes = require("./controller/auth-controller");
 
-app.use(authRoutes);
 app.use(userRoutes);
+app.use(authRoutes);
 
 const syncOptions = { force: false };
 

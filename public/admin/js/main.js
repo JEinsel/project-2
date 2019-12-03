@@ -1,6 +1,6 @@
 $(document).ready(function() {
   //show date for last apdated
-  $("#date").text(new Date());
+  $("#date").text(moment().format("lll"));
 
   $("#dataTable").DataTable();
 

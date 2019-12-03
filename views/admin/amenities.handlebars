@@ -1,5 +1,3 @@
-
-<!-- Amenities list -->
 <div class="card mb-3">
   <div class="card-header">
     <i class="fas fa-table"></i>
@@ -15,7 +13,7 @@
             <th>Description</th>
             <th>Photo</th>
             <th>Premium</th>
-            <th>Manage</th>
+            <th>View</th>
           </tr>
         </thead>
         <tfoot>
@@ -25,18 +23,20 @@
             <th>Description</th>
             <th>Photo</th>
             <th>Premium</th>
-            <th>Manage</th>
+            <th>View</th>
           </tr>
         </tfoot>
         <tbody>
           {{#each results}}
           <tr>
             <td>{{ id }}</td>
-            <td>{{ name }}</td>
+            <td><a class="link" href="/admin/amenities/{{ id }}">{{ name }}</a></td>
             <td>{{ description }}</td>
-            <td><img src="{{ photo }}" class="img-fluid"></td>
-            <td>{{ premium }}</td>
-            <td><a class="btn btn-dark ml-4" href="/admin/amenities/{{ id }}">Manage</a></td>
+            <td><img src="{{ photo }}" class="img-fluid img-thumbnail"></td>
+            <td class="{{ premium }} text-center"></td>
+            <td>
+              <a class="btn btn-dark btn-block" href="/admin/amenities/{{ id }}">View</a>
+            </td>
           </tr>
           {{/each}}
         </tbody>
@@ -45,12 +45,12 @@
   </div>
   <div class="card-footer small text-muted">Last updated <span id="date"></span></div>
 </div>
-{{#ifEq user.memberLvl '3'}}
-      <!-- Add new  -->
+{{#ifMore user.memberLvl 4}}
+<!-- Add new  -->
 <div class="card mb-3">
   <div class="card-header">
     <i class="fas fa-table"></i>
-    Add New Amenity: {{user.memberLvl}}
+    Add New Amenity
   </div>
   <div class="card-body">
     <form name="amenities_form" action="/admin/amenities" method="POST">
@@ -61,12 +61,14 @@
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea name="description" class="form-control"  id="amenity_description" aria-describedby="descriptionHelp" required></textarea>
+        <textarea name="description" class="form-control" id="amenity_description" aria-describedby="descriptionHelp"
+          required></textarea>
         <small id="descriptionHelp" class="form-text text-muted"></small>
       </div>
       <div class="form-group">
         <label for="name">Photo</label>
-        <input type="text" name="amenity_photo" class="form-control" id="amenity_photo" aria-describedby="photoHelp" required>
+        <input type="text" name="amenity_photo" class="form-control" id="amenity_photo" aria-describedby="photoHelp"
+          required>
         <small id="photoHelp" class="form-text text-muted"></small>
       </div>
       <div class="form-group">
@@ -77,8 +79,8 @@
         </select>
         <small id="premiumHelp" class="form-text text-muted"></small>
       </div>
-      <button type="submit" id="create_amenity" class="btn btn-primary">Submit</button>
+      <button type="submit" id="create_amenity" class="btn btn-dark">Submit</button>
     </form>
   </div>
 </div>
-{{/ifEq}}
+{{/ifMore}}

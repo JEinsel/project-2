@@ -29,10 +29,10 @@
           {{#each results}}
           <tr>
             <td>{{ id }}</td>
-            <td>{{ name }}</td>
+            <td><a class="link" href="/admin/categories/{{ id }}">{{ name }}</a></td>
             <td>{{ description }}</td>
-            <td><img src="{{ photo }}" class="img-fluid"></td>
-            <td><a class="btn btn-dark ml-4" href="/admin/categories/{{ id }}">Manage</a></td>
+            <td><img src="{{ photo }}" class="img-fluid img-thumbnail"></td>
+            <td><a class="btn btn-dark btn-block" href="/admin/categories/{{ id }}">View</a></td>
           </tr>
           {{/each}}
         </tbody>
@@ -41,7 +41,7 @@
   </div>
   <div class="card-footer small text-muted">Last updated <span id="date"></span></div>
 </div>
-
+{{#ifMore user.memberLvl 4}}
 <!-- Add new  -->
 <div class="card mb-3">
   <div class="card-header">
@@ -65,7 +65,8 @@
         <input type="text" class="form-control" id="category_photo" aria-describedby="photoHelp" required>
         <small id="photoHelp" class="form-text text-muted"></small>
       </div>
-      <button type="submit" id="create_category" class="btn btn-primary">Submit</button>
+      <button type="submit" id="create_category" class="btn btn-dark">Submit</button>
     </form>
   </div>
 </div>
+{{/ifMore}}

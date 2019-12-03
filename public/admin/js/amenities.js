@@ -1,4 +1,11 @@
 $(document).ready(function() {
+  if ($(".true")) {
+    $(".true").text("Premium");
+  }
+  if ($(".false")) {
+    $(".false").text("No");
+  }
+
   //creating new amenity
   $("#create_amenity").on("click", function(event) {
     console.log("click");
@@ -26,6 +33,7 @@ $(document).ready(function() {
     //sending our object to the post route
     $.post("/admin/amenities", newAmenityObj).then(() => location.reload());
   });
+
   //edit existing amenity
   $("#edit_amenity").on("click", function(event) {
     event.preventDefault();
@@ -58,6 +66,7 @@ $(document).ready(function() {
       `<button class="btn btn-block btn-dark" id="amenity_save">Save</button>`
     );
   });
+
   //saving edited object
   $(document).on("click", "#amenity_save", function(event) {
     event.preventDefault();
@@ -82,6 +91,7 @@ $(document).ready(function() {
     }).then(() => location.reload());
   });
 
+  //delete amenity
   $("#delete_amenity").on("click", function(event) {
     event.preventDefault();
     if (

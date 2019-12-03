@@ -1,3 +1,7 @@
+/*
+User levels: 0 = basic, 1 = Gold, 2 = Platinum, 3 = One day Pass, 4 = Moderator, 5 = Administrator,  6 = Super administrator
+*/
+
 const bcrypt = require("bcrypt");
 
 module.exports = function(sequelize, DataTypes) {
@@ -18,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       memberLvl: {
         type: DataTypes.STRING,
-        defaultValue: 1
+        defaultValue: 0
       }
     },
     {

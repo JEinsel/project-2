@@ -8,7 +8,7 @@ const session = require("express-session");
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 3000000 },
     secret: "wootwoot"
   })
 );
@@ -20,78 +20,87 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 //Amenities routes
+
+//Get all
 router.get("/admin/amenities", function(req, res) {
-  if (req.user) {
-    db.Amenities.findAll({}).then(function(dbAmenities) {
+  if (req.user && req.user.memberLvl >= 4) {
+    db.Amenities.findAll({}).then(function(result) {
       res.render("admin/amenities", {
         layout: "admin",
         title: "Amenities",
-        results: dbAmenities,
+        results: result,
         user: req.user
       });
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Get one
 router.get("/admin/amenities/:id", function(req, res) {
-  if (req.user) {
+  if (req.user && req.user.memberLvl >= 4) {
     db.Amenities.findOne({
       where: {
         id: req.params.id
       }
-    }).then(function(dbAmenities) {
+    }).then(function(result) {
       res.render("admin/amenity", {
         layout: "admin",
-        results: dbAmenities
+        title: result.name,
+        results: result,
+        user: req.user
       });
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Post one
 router.post("/admin/amenities", function(req, res) {
-  if (req.user) {
-    db.Amenities.create(req.body).then(function(postAmenities) {
-      res.json(postAmenities);
-      res.redirect("/admin");
+  if (req.user && req.user.memberLvl >= 4) {
+    db.Amenities.create(req.body).then(function(result) {
+      res.send(result);
+      res.redirect("/admin/amenities");
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Update one
 router.put("/admin/amenities/:id", function(req, res) {
-  if (req.user) {
+  if (req.user && req.user.memberLvl >= 4) {
     db.Amenities.update(req.body, {
       where: {
         id: req.params.id
       }
-    }).then(function(dbAmenities) {
+    }).then(function(result) {
       res.render("admin/amenity", {
         layout: "admin",
-        results: dbAmenities
+        results: result,
+        user: req.user
       });
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
 
+//Delete one
 router.delete("/admin/amenities/:id", function(req, res) {
-  if (req.user) {
+  if (req.user && req.user.memberLvl >= 4) {
     db.Amenities.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(dbAmenities) {
-      res.render("admin/amenities", {
-        layout: "admin",
-        title: "Amenities",
-        results: dbAmenities
-      });
+    }).then(function(result) {
+      res.send(result);
+      res.redirect("/admin/amenities");
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
 

@@ -8,7 +8,7 @@ const session = require("express-session");
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 3000000 },
     secret: "wootwoot"
   })
 );
@@ -19,77 +19,88 @@ require("../../config/passport")(passport);
 router.use(passport.initialize());
 router.use(passport.session());
 
-//Classes routes
+//Categories routes
+
+//Get all
 router.get("/admin/categories", function(req, res) {
-  if (req.user) {
-    db.Category.findAll({}).then(function(dbCategories) {
+  if (req.user && req.user.memberLvl >= 4) {
+    db.Category.findAll({}).then(function(result) {
       res.render("admin/categories", {
         layout: "admin",
         title: "Classes categories",
-        results: dbCategories
+        results: result,
+        user: req.user
       });
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Get one
 router.get("/admin/categories/:id", function(req, res) {
-  if (req.user) {
+  if (req.user && req.user.memberLvl >= 4) {
     db.Category.findOne({
       where: {
         id: req.params.id
       }
-    }).then(function(dbCategories) {
+    }).then(function(result) {
       res.render("admin/category", {
         layout: "admin",
-        results: dbCategories
+        title: result.name,
+        results: result,
+        user: req.user
       });
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Post one
 router.post("/admin/categories", function(req, res) {
-  if (req.user) {
-    db.Category.create(req.body).then(function(postCategory) {
-      res.json(postCategory);
+  if (req.user && req.user.memberLvl >= 4) {
+    db.Category.create(req.body).then(function(result) {
+      res.json(result);
       res.redirect("/admin/categories");
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Update one
 router.put("/admin/categories/:id", function(req, res) {
-  if (req.user) {
+  if (req.user && req.user.memberLvl >= 4) {
     db.Category.update(req.body, {
       where: {
         id: req.params.id
       }
-    }).then(function(dbCategories) {
+    }).then(function(result) {
       res.render("admin/category", {
         layout: "admin",
-        results: dbCategories
+        results: result,
+        user: req.user
       });
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
+
+//Delete one
 router.delete("/admin/categories/:id", function(req, res) {
-  if (req.user) {
+  if (req.user && req.user.memberLvl >= 4) {
     db.Category.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(dbCategories) {
-      res.render("admin/categories", {
-        layout: "admin",
-        title: "Categories",
-        results: dbCategories
-      });
+    }).then(function(result) {
+      res.send(result);
+      res.redirect("/admin/categories");
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
 
