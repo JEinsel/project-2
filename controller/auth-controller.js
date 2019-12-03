@@ -7,7 +7,7 @@ const router = express.Router();
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 3000000 },
     secret: "wootwoot"
   })
 );
