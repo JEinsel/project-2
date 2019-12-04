@@ -17,6 +17,10 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Routes
+const feAmenities = require("./controller/user/fe-amenities-controller");
+
+app.use(feAmenities);
+
 const authRoutes = require("./controller/auth-controller");
 const userRoutes = require("./controller/user-controller");
 app.use(authRoutes);
