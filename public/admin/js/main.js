@@ -20,4 +20,8 @@ $(document).ready(function() {
       $(".scroll-to-top").fadeOut();
     }
   });
+
+  $(document).on("click", "#cancel", function() {
+    location.reload();
+  });
 });
