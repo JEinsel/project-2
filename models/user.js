@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       memberLvl: {
         type: DataTypes.INTEGER,
-        defaultValue: 1
+        defaultValue: 0
       }
     },
     {
