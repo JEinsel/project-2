@@ -1,4 +1,9 @@
 {{!--  --}}
 {{#each results}}
 <p>{{name}}</p>
+<p>{{description}}</p>
+<a href="{{photo}}"></a>
+{{#if premium}}
+<p>premium</p>
+{{/if}}
 {{/each}}
