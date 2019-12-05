@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "root",
-    "password": "lollipop",
-    "database": "projecttwo_db",
-    "host": "localhost",
+    "username": "g6vzh21ymckd67bw",
+    "password": "kyf11cfikgdzerd4",
+    "database": "xl6tgz4w5jva22hh",
+    "host": "3306",
     "dialect": "mysql"
+    
   },
   "test": {
     "username": "root",
