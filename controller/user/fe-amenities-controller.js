@@ -19,11 +19,9 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 router.get("/amenities", function(req, res) {
-  console.log("user amenities");
-  
   if (req.user) {
-    db.Amenities.findAll({}).then(function(result) {
-      res.render("user/amenities", {
+    db.Amenities.findAll().then(function(result) {
+      res.render("/amenities", {
         title: "Amenities",
         results: result,
         user: req.user
