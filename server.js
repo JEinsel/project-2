@@ -51,7 +51,9 @@ const instructorsRoutes = require("./controller/admin/instructors-controller");
 const classesRoutes = require("./controller/admin/classes-controller");
 const catRoutes = require("./controller/admin/categories-controller");
 const usersRoutes = require("./controller/admin/users-controller");
+const feAmenities = require("./controller/user/fe-amenities-controller");
 
+app.use(feAmenities);
 app.use(adminRoutes);
 app.use(amenitiesRoutes);
 app.use(instructorsRoutes);
