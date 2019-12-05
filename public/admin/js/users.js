@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
   //edit existing user
   $("#edit_user").on("click", function(event) {
     event.preventDefault();

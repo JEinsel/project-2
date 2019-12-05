@@ -28,7 +28,8 @@ router.get("/admin", function(req, res) {
       res.render("admin/index", {
         layout: "admin",
         title: "Dashboard homepage",
-        results: result
+        results: result,
+        user: req.user
       });
     });
   } else {
@@ -51,7 +52,8 @@ router.get("/admin/admins", function(req, res) {
         res.render("admin/admins", {
           layout: "admin",
           title: "Admin users",
-          results: result
+          results: result,
+          user: req.user
         });
       });
   } else {
@@ -72,7 +74,8 @@ router.get("/admin/admins/:id", function(req, res) {
         res.render("admin/admin", {
           layout: "admin",
           title: "Admin",
-          results: result
+          results: result,
+          user: req.user
         });
       });
   } else {

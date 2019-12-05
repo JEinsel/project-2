@@ -51,7 +51,11 @@ const instructorsRoutes = require("./controller/admin/instructors-controller");
 const classesRoutes = require("./controller/admin/classes-controller");
 const catRoutes = require("./controller/admin/categories-controller");
 const usersRoutes = require("./controller/admin/users-controller");
+const payments = require("./controller/admin/payments-controller");
+const paypal = require("./controller/admin/paypal-controller");
 
+app.use(paypal);
+app.use(payments);
 app.use(adminRoutes);
 app.use(amenitiesRoutes);
 app.use(instructorsRoutes);
