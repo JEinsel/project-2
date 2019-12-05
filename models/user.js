@@ -34,6 +34,10 @@ module.exports = function(sequelize, DataTypes) {
     models.user.belongsTo(models.Instructor);
   };
 
+  User.associate = function(models) {
+    models.user.hasMany(models.Payment);
+  };
+
   User.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
   };

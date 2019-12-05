@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
@@ -22,14 +23,30 @@ router.use(passport.session());
 //Payments routes
 router.get("/admin/payments", function(req, res) {
   if (req.user) {
-    res.send("payments route");
+    db.Payment.findAll({}).then(function(result) {
+      res.render("admin/payments", {
+        layout: "admin",
+        title: "Payments",
+        results: result,
+        user: req.user
+      });
+    });
   } else {
     res.redirect("/login");
   }
 });
+
+
 router.get("/admin/payments/:id", function(req, res) {
   if (req.user) {
-    res.send("payments ID route");
+    db.Payment.findOne({ where: { id: req.params.id} }).then(function(result) {
+      res.render("admin/payment", {
+        layout: "admin",
+        title: "Payment",
+        results: result,
+        user: req.user
+      });
+    });
   } else {
     res.redirect("/login");
   }
