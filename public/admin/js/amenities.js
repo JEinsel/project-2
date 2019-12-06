@@ -63,7 +63,8 @@ $(document).ready(function() {
     `);
     $("#save_btn_placeholder").html(
       // eslint-disable-next-line quotes
-      `<button class="btn btn-block btn-dark" id="amenity_save">Save</button>`
+      `<button class="btn btn-dark" id="amenity_save">Save</button>
+      <button class="btn btn-danger" id="cancel">Cancel</button>`
     );
   });
 

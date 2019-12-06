@@ -30,11 +30,8 @@ module.exports = function(sequelize, DataTypes) {
   Class.associate = function(models) {
     models.Class.belongsTo(models.Category);
   };
-  //Da implementare!
-  /* 
   Class.associate = function(models) {
     models.Class.belongsTo(models.Instructor);
   };
-  */
   return Class;
 };

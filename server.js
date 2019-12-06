@@ -54,6 +54,11 @@ const usersRoutes = require("./controller/admin/users-controller");
 const feAmenities = require("./controller/user/fe-amenities-controller");
 
 app.use(feAmenities);
+const payments = require("./controller/admin/payments-controller");
+const paypal = require("./controller/admin/paypal-controller");
+
+app.use(paypal);
+app.use(payments);
 app.use(adminRoutes);
 app.use(amenitiesRoutes);
 app.use(instructorsRoutes);

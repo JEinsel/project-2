@@ -1,6 +1,5 @@
 $(document).ready(function() {
   console.log("reading this");
-  
   if ($(".lvl").text() === "4") {
     $(".lvl").text("Moderator");
   } else if ($(".lvl").text() === "5") {
