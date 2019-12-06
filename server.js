@@ -53,7 +53,9 @@ const catRoutes = require("./controller/admin/categories-controller");
 const usersRoutes = require("./controller/admin/users-controller");
 const payments = require("./controller/admin/payments-controller");
 const paypal = require("./controller/admin/paypal-controller");
+const websiteController = require("./controller/admin/website-controller");
 
+app.use(websiteController);
 app.use(paypal);
 app.use(payments);
 app.use(adminRoutes);

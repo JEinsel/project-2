@@ -98,36 +98,25 @@ var handleDeleteBtnClick = function() {
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-
-
-
-
-
-
-
-
 //video
 var vid = document.getElementById("bgvid");
 var pauseButton = document.querySelector("#polina button");
 
-if (window.matchMedia('(prefers-reduced-motion)').matches) {
-    vid.removeAttribute("autoplay");
-    vid.pause();
-    pauseButton.innerHTML = "Paused";
+if (window.matchMedia("(prefers-reduced-motion)").matches) {
+  vid.removeAttribute("autoplay");
+  vid.pause();
+  pauseButton.innerHTML = "Paused";
 }
 
 function vidFade() {
   vid.classList.add("stopfade");
 }
 
-vid.addEventListener('ended', function()
-{
+vid.addEventListener("ended", function() {
+  vid.pause();
 
-vid.pause();
-
-vidFade();
-}); 
-
+  vidFade();
+});
 
 pauseButton.addEventListener("click", function() {
   vid.classList.toggle("stopfade");
@@ -138,13 +127,10 @@ pauseButton.addEventListener("click", function() {
     vid.pause();
     pauseButton.innerHTML = "Paused";
   }
-})
-
-
-
+});
 
 $(document).ready(function() {
   $(".trigger").click(function() {
-    $(".menu").toggleClass("active"); 
+    $(".menu").toggleClass("active");
   });
 });
