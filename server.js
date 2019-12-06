@@ -56,6 +56,7 @@ const feMemberships = require("./controller/user/fe-memberships-controller");
 
 app.use(feMemberships);
 app.use(feAmenities);
+
 const payments = require("./controller/admin/payments-controller");
 const paypal = require("./controller/admin/paypal-controller");
 const websiteController = require("./controller/admin/website-controller");
