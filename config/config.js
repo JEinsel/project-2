@@ -1,14 +1,14 @@
 module.exports = {
   development: {
-    username: "root",
-    password: "root",
-    database: "projecttwo_db",
-    host: "localhost",
+    username: process.env.user,
+    password: process.env.password,
+    database: process.env.database,
+    host: process.env.host,
     dialect: "mysql"
   },
   test: {
     username: "root",
-    password: "password",
+    password: "lollipop",
     database: "projecttwo_db",
     host: "localhost",
     dialect: "mysql",
