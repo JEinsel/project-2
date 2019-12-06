@@ -151,6 +151,14 @@ p{
   background-size: cover;
 }
 
+.navbar a {
+  background: transparent!important;
+}
+
+.bg-black {
+  background: #121212;
+}
+
  
 
 

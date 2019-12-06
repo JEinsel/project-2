@@ -71,10 +71,10 @@ app.use(catRoutes);
 app.use(usersRoutes);
 
 //Auth routes
-const userRoutes = require("./controller/user-controller");
+//const userRoutes = require("./controller/user-controller");
 const authRoutes = require("./controller/auth-controller");
 
-app.use(userRoutes);
+//app.use(userRoutes);
 app.use(authRoutes);
 
 const syncOptions = { force: false };
