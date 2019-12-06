@@ -52,7 +52,9 @@ const classesRoutes = require("./controller/admin/classes-controller");
 const catRoutes = require("./controller/admin/categories-controller");
 const usersRoutes = require("./controller/admin/users-controller");
 const feAmenities = require("./controller/user/fe-amenities-controller");
+const feMemberships = require("./controller/user/fe-memberships-controller");
 
+app.use(feMemberships);
 app.use(feAmenities);
 const payments = require("./controller/admin/payments-controller");
 const paypal = require("./controller/admin/paypal-controller");
