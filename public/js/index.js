@@ -106,6 +106,7 @@ if (window.matchMedia("(prefers-reduced-motion)").matches) {
   vid.removeAttribute("autoplay");
   vid.pause();
   pauseButton.innerHTML = "Paused";
+
 }
 
 function vidFade() {
@@ -118,6 +119,7 @@ vid.addEventListener("ended", function() {
   vidFade();
 });
 
+
 pauseButton.addEventListener("click", function() {
   vid.classList.toggle("stopfade");
   if (vid.paused) {
@@ -127,6 +129,7 @@ pauseButton.addEventListener("click", function() {
     vid.pause();
     pauseButton.innerHTML = "Paused";
   }
+
 });
 
 $(document).ready(function() {
@@ -134,3 +137,7 @@ $(document).ready(function() {
     $(".menu").toggleClass("active");
   });
 });
+
+
+
+
