@@ -47,34 +47,34 @@
 </nav>
 
 <section class="container text-center vh-100">
-  <h1 class="list py-3">{{ title }}</h1>
+  <h1 class="list py-3">{{ title1 }}</h1>
   <h2 class="py-3">Become The Person You Want To Be</h2>
   <div class="card-deck">
-    <div class="card text-white bg-primary mb-3">
+    <div class="card text-white bg-orange-80 mb-3">
       <div class="card-header h3">Become a member!</div>
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
         <h2 class="py-2">$9.99 per month</h2>
-        <button class="btn btn-warning">Join Now!</button>
+        <button class="btn btn-dark">Join Now!</button>
       </div>
     </div>
-    <div class="card text-white bg-info mb-3">
+    <div class="card text-white bg-orange-light-80 mb-3">
       <div class="card-header h3">Gold Membership</div>
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
         <h2 class="py-2">$19.99 per month</h2>
-        <button class="btn btn-warning">Join Now!</button>
+        <button class="btn btn-dark">Join Now!</button>
       </div>
     </div>
-    <div class="card text-white bg-success mb-3">
+    <div class="card text-white bg-orange-dark-80 mb-3">
       <div class="card-header h3">Buy One Day Pass!</div>
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
         <h2 class="py-2">$2.99</h2>
-        <button class="btn btn-warning">Join Now!</button>
+        <button class="btn btn-dark">Join Now!</button>
       </div>
     </div>
   </div>
@@ -113,13 +113,10 @@
 {{!-- amenities --}}
 <section class="container-fluid " id="amenities">
   <div class="container text-center">
-
-    <h1 class="second py-3">{{ title1 }}</h1>
-
-
+    <h1 class="second py-3">{{ title2 }}</h1>
     <div class="card-columns">
       {{#each am}}
-      <div class="card">
+      <div class="card card window-black">
         <img class="card-img-top" src="{{ photo }}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{ name }}</h5>
@@ -128,15 +125,33 @@
       </div>
       {{/each}}
     </div>
+  </div>
+</section>
+<section class="container-fluid " id="instructors">
+  <div class="container text-center">
+    <h1 class="second py-3">{{ title3 }}</h1>
     <div class="card-columns">
-      <h1>{{title2}}</h1>
       {{#each inst}}
-      <div class="card">
+      <div class="card window-black">
         <img class="card-img-top" src="{{ photo }}" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">{{ email }}</h5>
+          <h5 class="card-title">{{ firstName }} {{ lasttName }}</h5>
         </div>
-
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+<section class="container-fluid " id="instructors">
+  <div class="container text-center">
+    <h1 class="second py-3">{{ title4 }}</h1>
+    <div class="card-columns">
+      {{#each classes}}
+      <div class="card card window-black">
+        <div class="card-body">
+          <h5 class="card-title">{{ name }}</h5>
+          <p class="card-text">{{ description }}</p>
+        </div>
       </div>
       {{/each}}
     </div>

@@ -23,23 +23,29 @@ router.use(passport.session());
 
 //Get all
 router.get("/", function(req, res) {
-  let am;
+  let amenities;
   let inst;
+  let classes;
   db.Amenities.findAll({}).then(function(result) {
-    am = result;
+    amenities = result;
+  });
+  db.Class.findAll({}).then(function(result) {
+    classes = result;
   });
   db.Instructor.findAll({})
     .then(function(result) {
       inst = result;
     })
     .then(function(result) {
-      console.log(result);
       res.render("index", {
         layout: "main",
-        title1: "ams",
-        title2: "inst",
+        title1: "Welcome to N.E. Gym",
+        title2: "Ammenities",
+        title3: "Instructors",
+        title4: "Classes",
         inst: inst,
-        am: am,
+        am: amenities,
+        classes: classes,
         user: req.user
       });
     });
