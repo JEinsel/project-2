@@ -18,7 +18,7 @@ require("../config/passport")(passport);
 router.use(passport.initialize());
 router.use(passport.session());
 
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
   if (req.user) {
     res.render("index", {
       user: req.user
@@ -28,7 +28,7 @@ router.get("/", function(req, res) {
   }
 });
 
-router.get("/login", function(req, res) {
+router.get("/login", function (req, res) {
   res.render("login", { message: req.flash("error") });
 });
 
@@ -41,7 +41,7 @@ router.post(
   })
 );
 
-router.get("/signup", function(req, res) {
+router.get("/signup", function (req, res) {
   res.render("signup", { message: req.flash("error") });
 });
 
@@ -54,12 +54,12 @@ router.post(
   })
 );
 
-router.get("/logout", function(req, res) {
+router.get("/logout", function (req, res) {
   req.logout();
   res.redirect("/");
 });
 
-router.get("*", function(req, res) {
+router.get("*", function (req, res) {
   res.render("404");
 });
 
