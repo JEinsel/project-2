@@ -6,7 +6,7 @@ body {
 .list-group-item { 
   line-height: 2.5;
  }
- body {
+  body {
     margin: 0;
     background: #000; 
   }
@@ -27,7 +27,6 @@ body {
   .stopfade { 
      opacity: .5;
   }
-
   #polina { 
     font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
     font-weight:100; 
@@ -61,7 +60,6 @@ body {
   #polina button:hover { 
      background: rgba(0,0,0,0.5);
   }
-
   a {
     display: inline-block;
     color: #fff;
@@ -85,7 +83,6 @@ body {
 
  body{padding:0px;
     margin:0px;
-
 }
 .section{
   height:500px;
@@ -148,14 +145,11 @@ p{
   color: white;
 } 
  
-
 #amenities {
   background: url("https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Fitness/Articles/Twice+a+Day/man+working+out-carousel.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-
 
  
 
