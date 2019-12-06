@@ -1,7 +1,12 @@
- .list-group-item { 
+body {
+  margin: 0;
+  background: #000; 
+}
+
+.list-group-item { 
   line-height: 2.5;
  }
- body {
+  body {
     margin: 0;
     background: #000; 
   }
@@ -22,7 +27,6 @@
   .stopfade { 
      opacity: .5;
   }
-
   #polina { 
     font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
     font-weight:100; 
@@ -56,7 +60,6 @@
   #polina button:hover { 
      background: rgba(0,0,0,0.5);
   }
-
   a {
     display: inline-block;
     color: #fff;
@@ -74,85 +77,87 @@
   @media screen and (max-device-width: 800px) {
     html { background: url(https://static.videezy.com/system/resources/previews/000/007/006/original/MR8_8170.mp4 ) #000 no-repeat center center fixed; }
     #bgvid { display: none; }
-  }
+}
 
 /* body 1st html */
 
  body{padding:0px;
     margin:0px;
-
 }
 .section{
- 
- height:500px;
+  height:500px;
   margin-top:-25px;
- background-size:cover;
- background-position:center center;
- background-attachment:fixed;
+  background-size:cover;
+  background-position:center center;
+  background-attachment:fixed;
 }
 
 .list{color: white;
-    
-    font-size:60px;
-    maegin-top:100px;
-    text-align:center;
-     
+  font-size:60px;
+  margin-top:100px;
+  text-align:center;
 }
-#About{background:url(https://www.mensjournal.com/wp-content/uploads/mf/dumbbellrack_rotator.gif);
- height:500px;
- background-size:cover;
- background-position:center center;
- background-attachment:fixed;
- 
+
+#About{
+  background:url(https://www.mensjournal.com/wp-content/uploads/mf/dumbbellrack_rotator.gif);
+  height:500px;
+  background-size:cover;
+  background-position:center center;
+  background-attachment:fixed;
 }
+
 h2{color: white;
   text-align:center;
- 
 }
+
 .set{color:#ffffff;
     font-size:16px;
- 
- 
 }
-#contact{background:url(http://blackirongymnv.com/wp-content/uploads/2015/07/black-iron-gym-contact.jpg);
- height:400px;
- background-size:cover;
- background-position:center center;
- background-attachment:fixed;
- 
- 
+
+#contact{
+  background:url(http://blackirongymnv.com/wp-content/uploads/2015/07/black-iron-gym-contact.jpg);
+  height:400px;
+  background-size:cover;
+  background-position:center center;
+  background-attachment:fixed;
 }
+
 #nextBox{
  background-color: transparent;
 }
-p{color:#ffffff;
- 
+
+p{
+  color:#ffffff;
 }
-.lee{color:#ffffff;
- 
- 
+
+.lee{
+  color:#ffffff;
 }
+
 .jest{list-style:none;
-     text-decoration:none;
- 
+  text-decoration:none;
 }
-.second{color:#ffffff;
- 
- 
+.second{
+  color:#ffffff;
 }
 
 #contact {
-color: white;
+  color: white;
 } 
  
-
 #amenities {
   background: url("https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Fitness/Articles/Twice+a+Day/man+working+out-carousel.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+.navbar a {
+  background: transparent!important;
+}
 
+.bg-black {
+  background: #121212;
+}
 
  
 
