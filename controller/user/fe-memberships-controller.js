@@ -29,7 +29,7 @@ router.get("/memberships", function (req, res) {
   }
 });
 
-router.put("/memberships", function (req, res) {
+router.put("/memberships", function(req, res) {
   if (req.user) {
     db.user
       .update(req.body, {
@@ -38,7 +38,7 @@ router.put("/memberships", function (req, res) {
         fName: req.body.fName,
         lName: req.body.lName
       })
-      .then(function (result) {
+      .then(function(result) {
         res.render("user/fe-memberships", {
           layout: "fe-memberships",
           results: result,
@@ -46,7 +46,7 @@ router.put("/memberships", function (req, res) {
         });
       });
   } else {
-    res.redirect("/");
+    res.redirect("/login");
   }
 });
 
