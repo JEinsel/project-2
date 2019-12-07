@@ -30,9 +30,24 @@ router.get("/memberships", function (req, res) {
 });
 
 router.put("/memberships", function (req, res) {
-  user.update({
-    memberLvl: req.body.memberLvl
-  });
+  if (req.user) {
+    db.user
+      .update(req.body, {
+        email: req.body.email,
+        password: req.body.password,
+        fName: req.body.fName,
+        lName: req.body.lName
+      })
+      .then(function (result) {
+        res.render("user/fe-memberships", {
+          layout: "fe-memberships",
+          results: result,
+          user: req.user
+        });
+      });
+  } else {
+    res.redirect("/");
+  }
 });
 
 module.exports = router;
