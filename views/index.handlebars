@@ -3,76 +3,30 @@
     type="video/webm">
 </video>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top ">
-  <div class="container">
-    <a class="navbar-brand" href="/">N.E.Gym</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/amenities">Amenities</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/classes">Classes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/instructors">Instructors</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/trial">Trial</a>
-        </li>
-      </ul>
-
-      {{#if user}}
-      <span class="navbar-text">
-        <a href="/account">Account</a> / <a href="/logout">Log Out</a>
-      </span>
-      {{/if}}
-      {{#unless user}}
-      <span class="navbar-text">
-        <a href="/login">Login</a> / <a href="/signin">Sign In</a>
-      </span>
-      {{/unless}}
-      {{#ifMore user.memberLvl 4}}
-      <span class="navbar-text">
-        / <a href="/admin">Admin panel</a>
-      </span>
-      {{/ifMore}}
-    </div>
-  </div>
-</nav>
+{{> frontend.nav}}
 
 <section class="container text-center vh-100">
   <h1 class="py-3 title kalam">{{ title1 }}</h1>
   <div class="card-deck my-5">
-    <div class="card text-white bg-orange-80 mb-3">
+    <div class="card text-white bg-orange-80 mb-3 animated bounceInRight slow">
       <div class="card-header h3">Become a member!</div>
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
         <h2 class="py-2">$9.99 per month</h2>
-        <a class="btn btn-dark">Join Now!</a>
+        <a class="btn hvr-bounce-to-right" href="#">Join Now!</a>
       </div>
     </div>
-    <div class="card text-white bg-orange-light-80 mb-3">
+    <div class="card text-white bg-orange-light-80 mb-3 animated bounceInDown slow">
       <div class="card-header h3">Gold Membership</div>
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
         <h2 class="py-2">$19.99 per month</h2>
-        <button class="btn btn-dark">Join Now!</button>
+        <button class="btn hvr-radial-in">Join Now!</button>
       </div>
     </div>
-    <div class="card text-white bg-orange-dark-80 mb-3">
+    <div class="card text-white bg-orange-dark-80 mb-3 animated bounceInLeft slow">
       <div class="card-header h3">Buy One Day Pass!</div>
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
@@ -81,7 +35,7 @@
         <form action="/prepayment" method="POST">
           <input type="hidden" name="home_one_day_pass_type" value="one_day_pass">
           <input type="hidden" name="home_one_day_pass_amount" value="2.99">
-          <button class="btn btn-dark" type="submit" id="home_one_day_pass_submit">Join Now!</button>
+          <button class="btn hvr-bounce-to-left" type="submit" id="home_one_day_pass_submit">Join Now!</button>
         </form>
       </div>
     </div>
@@ -94,8 +48,8 @@
   <div class="container">
     <div class="row ">
       <div class="col-md-6">
-        <h2 class="text-left">N.E. Gym</h2>
-        <p>
+        <h2 class="text-left animated fadeInRightBig">N.E. Gym</h2>
+        <p class="animated fadeInRightBig slow">
           Spicy jalapeno bacon ipsum dolor amet beef salami turducken shankle chicken sirloin corned beef leberkas
           biltong pork loin fatback. Short ribs burgdoggen beef ribs tongue beef chicken landjaeger salami pastrami
           sausage biltong filet mignon tri-tip porchetta. Tongue porchetta prosciutto, short ribs jowl picanha boudin
@@ -109,7 +63,7 @@
 <section class="container-fluid d-flex p-2 justify-content-center align-items-center vh-100">
   <div class="container">
     <div class="card-deck my-5">
-      <div class="card text-white  window-black mb-3">
+      <div class="card text-white window-black mb-3 animated bounceInLeft slow">
         <div class="card-header h3 text-orange text-center">Amenities</div>
         <div class="card-body">
           <ul class="list-unordered">
@@ -119,20 +73,20 @@
           </ul>
 
         </div>
-        <div class="card-footer bg-orange"><a class="btn btn-orange btn-block" href="/amenities">Check them out!</a>
+        <div class="card-footer bg-orange"><a class="btn hvr-rectangle-out btn-block" href="/amenities">Check them out!</a>
         </div>
       </div>
 
-      <div class="card text-white window-black mb-3 ">
+      <div class="card text-white window-black mb-3 animated bounceInUp slow">
         <div class="card-body text-center d-flex flex-column p-2 justify-content-center align-items-center">
           <h1 class="card-text">OPEN</h1>
           <h1 class="display-1">24/7</h2>
             <h4>at most locations</h4>
         </div>
-        <div class="card-footer bg-orange"><a class="btn btn-orange btn-block" href="/calendar">Get a free pass!</a>
+        <div class="card-footer bg-orange"><a class="btn hvr-rectangle-out btn-block" href="/calendar">Get a free pass!</a>
         </div>
       </div>
-      <div class="card text-white  window-black mb-3">
+      <div class="card text-white  window-black mb-3 animated bounceInRight slow">
         <div class="card-header h3 text-orange text-center">Classes</div>
         <div class="card-body">
           <ul class="list-unordered">
@@ -141,7 +95,7 @@
             {{/each }}
           </ul>
         </div>
-        <div class="card-footer bg-orange"><a class="btn btn-orange btn-block" href="/calendar">View Calendar</a></div>
+        <div class="card-footer bg-orange"><a class="btn hvr-rectangle-out btn-block" href="/calendar">View Calendar</a></div>
       </div>
     </div>
 
@@ -152,8 +106,8 @@
 {{!-- slogan --}}
 <section class="container-fluid d-flex p-2 justify-content-end align-items-center vh-100" id="slogan">
   <div class="container">
-    <h2 class="text-left">Our philosophy</h2>
-    <p>
+    <h2 class="text-left animated fadeInDownBig slow">Our philosophy</h2>
+    <p class=" animated fadeInUpBig slow">
       Spicy jalapeno bacon ipsum dolor amet beef salami turducken shankle chicken sirloin corned beef leberkas
       biltong pork loin fatback. Short ribs burgdoggen beef ribs tongue beef chicken landjaeger salami pastrami
       sausage biltong filet mignon tri-tip porchetta. Tongue porchetta prosciutto, short ribs jowl picanha boudin
@@ -161,57 +115,5 @@
     </p>
   </div>
 </section>
-<section class="container-fluid d-flex p-2 justify-content-end align-items-center vh-100">
-  <div class="container">
-    <div class="row ">
-      <div class="col-md-3 text-right">
-        <h3 class="text-orange">Location</h3>
-        <hr class="bg-orange">
-        <ul class="list-unstyled">
-          <li>92 W Vaughn Ave</li>
-          <li>Gilbert, AZ 85233</li>
-          <li><a href="" class="text-orange-light">Get Directions</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3 text-left">
-        <h3 class="text-orange">Contacts</h3>
-        <hr class="bg-orange">
-        <ul class="list-unstyled">
-          <li><span class="text-orange-light">Phone:</span> +1 (602) 123-4567</li>
-          <li><span class="text-orange-light">Fax:</span> +1 (602) 123-4567</li>
-          <li><span class="text-orange-light">Email:</span> info@anygym.com</li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center bg-orange-light-80">
-          <div class="card-body">
-            <h3 class="card-title py-3">Request Free One Day Pass!</h3>
-            <a href="#" class="btn btn-orange-dark">Get a Free Pass!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center bg-orange-dark-80">
-          <div class="card-body">
-            <h3 class="card-title py-3">Compare Memberships</h3>
-            <a href="#" class="btn btn-orange-dark">Compare</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<footer class="pt-4 pb-3 bg-black text-center container-fluid">
-  <div class="row">
-    <div class="col-md-6 text-left"><small class="text-muted">Copyright © 2019 Team Death Eaters aka JIRC</small></div>
-    <div class="col-md-6 text-right">
-      <ul class="list-inline">
-        <li class="list-inline-item social fb"><a href="#"><i class="fab fa-facebook-f icon"></i></a></li>
-        <li class="list-inline-item social twitter"><a href="#"><i class="fab fa-twitter icon"></i></a></li>
-        <li class="list-inline-item social pinterest"><a href="#"><i class="fab fa-pinterest-p icon"></i></a></li>
-        <li class="list-inline-item social google"><a href="#"><i class="fab fa-google-plus-g icon"></i></a></li>
-        <li class="list-inline-item social github"><a href="#"><i class="fab fa-github icon"></i></a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+
+{{> frontend.footer}}
