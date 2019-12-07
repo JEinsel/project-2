@@ -42,21 +42,25 @@
         <a href="/login">Login</a> / <a href="/signin">Sign In</a>
       </span>
       {{/unless}}
+      {{#ifMore user.memberLvl 4}}
+      <span class="navbar-text">
+        / <a href="/admin">Admin panel</a>
+      </span>
+      {{/ifMore}}
     </div>
   </div>
 </nav>
 
 <section class="container text-center vh-100">
-  <h1 class="list py-3">{{ title1 }}</h1>
-  <h2 class="py-3">Become The Person You Want To Be</h2>
-  <div class="card-deck">
+  <h1 class="py-3 title kalam">{{ title1 }}</h1>
+  <div class="card-deck my-5">
     <div class="card text-white bg-orange-80 mb-3">
       <div class="card-header h3">Become a member!</div>
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
         <h2 class="py-2">$9.99 per month</h2>
-        <button class="btn btn-dark">Join Now!</button>
+        <a class="btn btn-dark">Join Now!</a>
       </div>
     </div>
     <div class="card text-white bg-orange-light-80 mb-3">
@@ -74,119 +78,140 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
         <h2 class="py-2">$2.99</h2>
-        <button class="btn btn-dark">Join Now!</button>
+        <form action="/prepayment" method="POST">
+          <input type="hidden" name="home_one_day_pass_type" value="one_day_pass">
+          <input type="hidden" name="home_one_day_pass_amount" value="2.99">
+          <button class="btn btn-dark" type="submit" id="home_one_day_pass_submit">Join Now!</button>
+        </form>
       </div>
     </div>
   </div>
+  <h2 class="py-3">Become The Person You Want To Be</h2>
 </section>
 
 {{!-- members --}}
-<section class="container   vh-100">
-  <div id="Members" class="text-white">
-    <h2>Members <small>Something about memebers</small></h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna
-      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-      sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
-      corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
-      qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
-      distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-      placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut
-      officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
-      recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-      consequatur aut perferendis doloribus asperiores repellat.
-      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
-      corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
-      qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
-      distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-      placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut
-      officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
-      recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-      consequatur aut perferendis doloribus asperiores repellat.
-    </p>
+<section class="container-fluid d-flex p-2 justify-content-center align-items-center vh-100" id="about">
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-6">
+        <h2 class="text-left">N.E. Gym</h2>
+        <p>
+          Spicy jalapeno bacon ipsum dolor amet beef salami turducken shankle chicken sirloin corned beef leberkas
+          biltong pork loin fatback. Short ribs burgdoggen beef ribs tongue beef chicken landjaeger salami pastrami
+          sausage biltong filet mignon tri-tip porchetta. Tongue porchetta prosciutto, short ribs jowl picanha boudin
+          tail. Pastrami doner frankfurter drumstick meatball picanha ham bacon.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 {{!-- amenities --}}
-<section class="container-fluid " id="amenities">
-  <div class="container text-center">
-    <h1 class="second py-3">{{ title2 }}</h1>
-    <div class="card-columns">
-      {{#each am}}
-      <div class="card card window-black">
-        <img class="card-img-top" src="{{ photo }}" alt="Card image cap">
+<section class="container-fluid d-flex p-2 justify-content-center align-items-center vh-100">
+  <div class="container">
+    <div class="card-deck my-5">
+      <div class="card text-white  window-black mb-3">
+        <div class="card-header h3 text-orange text-center">Amenities</div>
         <div class="card-body">
-          <h5 class="card-title">{{ name }}</h5>
-        </div>
+          <ul class="list-unordered">
+            {{#each am}}
+            <li>{{name}}</li>
+            {{/each }}
+          </ul>
 
-      </div>
-      {{/each}}
-    </div>
-  </div>
-</section>
-<section class="container-fluid " id="instructors">
-  <div class="container text-center">
-    <h1 class="second py-3">{{ title3 }}</h1>
-    <div class="card-columns">
-      {{#each inst}}
-      <div class="card window-black">
-        <img class="card-img-top" src="{{ photo }}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{ firstName }} {{ lasttName }}</h5>
+        </div>
+        <div class="card-footer bg-orange"><a class="btn btn-orange btn-block" href="/amenities">Check them out!</a>
         </div>
       </div>
-      {{/each}}
-    </div>
-  </div>
-</section>
-<section class="container-fluid " id="instructors">
-  <div class="container text-center">
-    <h1 class="second py-3">{{ title4 }}</h1>
-    <div class="card-columns">
-      {{#each classes}}
-      <div class="card card window-black">
-        <div class="card-body">
-          <h5 class="card-title">{{ name }}</h5>
-          <p class="card-text">{{ description }}</p>
+
+      <div class="card text-white window-black mb-3 ">
+        <div class="card-body text-center d-flex flex-column p-2 justify-content-center align-items-center">
+          <h1 class="card-text">OPEN</h1>
+          <h1 class="display-1">24/7</h2>
+            <h4>at most locations</h4>
+        </div>
+        <div class="card-footer bg-orange"><a class="btn btn-orange btn-block" href="/calendar">Get a free pass!</a>
         </div>
       </div>
-      {{/each}}
+      <div class="card text-white  window-black mb-3">
+        <div class="card-header h3 text-orange text-center">Classes</div>
+        <div class="card-body">
+          <ul class="list-unordered">
+            {{#each classes}}
+            <li>{{name}}</li>
+            {{/each }}
+          </ul>
+        </div>
+        <div class="card-footer bg-orange"><a class="btn btn-orange btn-block" href="/calendar">View Calendar</a></div>
+      </div>
     </div>
+
   </div>
+  </div>
+
 </section>
-<section class="container">
-  <div>
-    <h3 class="second">Contact Us</h3>
+{{!-- slogan --}}
+<section class="container-fluid d-flex p-2 justify-content-end align-items-center vh-100" id="slogan">
+  <div class="container">
+    <h2 class="text-left">Our philosophy</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est
-      laborum.
-      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-      atque
-      corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
-      culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est
-      et
-      expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id
-      quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem
-      quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-      molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
-      maiores alias consequatur aut perferendis doloribus asperiores repellat.
-      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-      atque
-      corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
-      culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est
-      et
-      expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id
-      quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem
-      quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-      molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
-      maiores alias consequatur aut perferendis doloribus asperiores repellat.
+      Spicy jalapeno bacon ipsum dolor amet beef salami turducken shankle chicken sirloin corned beef leberkas
+      biltong pork loin fatback. Short ribs burgdoggen beef ribs tongue beef chicken landjaeger salami pastrami
+      sausage biltong filet mignon tri-tip porchetta. Tongue porchetta prosciutto, short ribs jowl picanha boudin
+      tail. Pastrami doner frankfurter drumstick meatball picanha ham bacon.
     </p>
   </div>
 </section>
+<section class="container-fluid d-flex p-2 justify-content-end align-items-center vh-100">
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-3 text-right">
+        <h3 class="text-orange">Location</h3>
+        <hr class="bg-orange">
+        <ul class="list-unstyled">
+          <li>92 W Vaughn Ave</li>
+          <li>Gilbert, AZ 85233</li>
+          <li><a href="" class="text-orange-light">Get Directions</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 text-left">
+        <h3 class="text-orange">Contacts</h3>
+        <hr class="bg-orange">
+        <ul class="list-unstyled">
+          <li><span class="text-orange-light">Phone:</span> +1 (602) 123-4567</li>
+          <li><span class="text-orange-light">Fax:</span> +1 (602) 123-4567</li>
+          <li><span class="text-orange-light">Email:</span> info@anygym.com</li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center bg-orange-light-80">
+          <div class="card-body">
+            <h3 class="card-title py-3">Request Free One Day Pass!</h3>
+            <a href="#" class="btn btn-orange-dark">Get a Free Pass!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center bg-orange-dark-80">
+          <div class="card-body">
+            <h3 class="card-title py-3">Compare Memberships</h3>
+            <a href="#" class="btn btn-orange-dark">Compare</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="pt-4 pb-3 bg-black text-center container-fluid">
+  <div class="row">
+    <div class="col-md-6 text-left"><small class="text-muted">Copyright © 2019 Team Death Eaters aka JIRC</small></div>
+    <div class="col-md-6 text-right">
+      <ul class="list-inline">
+        <li class="list-inline-item social fb"><a href="#"><i class="fab fa-facebook-f icon"></i></a></li>
+        <li class="list-inline-item social twitter"><a href="#"><i class="fab fa-twitter icon"></i></a></li>
+        <li class="list-inline-item social pinterest"><a href="#"><i class="fab fa-pinterest-p icon"></i></a></li>
+        <li class="list-inline-item social google"><a href="#"><i class="fab fa-google-plus-g icon"></i></a></li>
+        <li class="list-inline-item social github"><a href="#"><i class="fab fa-github icon"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
