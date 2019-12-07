@@ -20,19 +20,33 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 // paypal
-router.get("/paypal", function(req, res) {
+router.get("/paypal", function (req, res) {
   if (req.user) {
     res.render("payments/payment", {
       layout: "main",
       userId: req.user.id
     });
   } else {
-    res.redirect("/");
+    res.redirect("/login");
+  }
+});
+
+// paypal
+router.post("/prepayment", function (req, res) {
+  if (req.user) {
+    res.render("payments/payment", {
+      layout: "main",
+      userId: req.user.id,
+      type: req.body.home_one_day_pass_type,
+      amount: req.body.home_one_day_pass_amount
+    });
+  } else {
+    res.redirect("/login");
   }
 });
 
 //New admin user
-router.post("/paypal", function(req, res) {
+router.post("/paypal", function (req, res) {
   if (req.user) {
     db.Payment.create({
       paymentId: req.body.orderID,
@@ -42,7 +56,7 @@ router.post("/paypal", function(req, res) {
       status: req.body.status,
       referenceId: req.body.referenceId,
       userId: req.user.id
-    }).then(function(result) {
+    }).then(function (result) {
       console.log(result);
       if (req.body.status === "COMPLETED") {
         res.redirect("/success");
@@ -55,7 +69,7 @@ router.post("/paypal", function(req, res) {
   }
 });
 // success
-router.get("/success", function(req, res) {
+router.get("/success", function (req, res) {
   if (req.user) {
     res.render("payments/success", {
       layout: "main",
@@ -63,11 +77,11 @@ router.get("/success", function(req, res) {
       message: "success!!!"
     });
   } else {
-    res.redirect("/");
+    res.redirect("/login");
   }
 });
 // success
-router.get("/cancel", function(req, res) {
+router.get("/cancel", function (req, res) {
   if (req.user) {
     res.render("payments/error", {
       layout: "main",
@@ -75,7 +89,7 @@ router.get("/cancel", function(req, res) {
       message: "error!!!"
     });
   } else {
-    res.redirect("/");
+    res.redirect("/login");
   }
 });
 module.exports = router;

@@ -106,7 +106,6 @@ if (window.matchMedia("(prefers-reduced-motion)").matches) {
   vid.removeAttribute("autoplay");
   vid.pause();
   pauseButton.innerHTML = "Paused";
-
 }
 
 function vidFade() {
@@ -119,7 +118,6 @@ vid.addEventListener("ended", function() {
   vidFade();
 });
 
-
 pauseButton.addEventListener("click", function() {
   vid.classList.toggle("stopfade");
   if (vid.paused) {
@@ -129,7 +127,6 @@ pauseButton.addEventListener("click", function() {
     vid.pause();
     pauseButton.innerHTML = "Paused";
   }
-
 });
 
 $(document).ready(function() {
@@ -137,7 +134,9 @@ $(document).ready(function() {
     $(".menu").toggleClass("active");
   });
 });
-
-
-
-
+/* $("#home_one_day_pass_submit").on("click", function(event) {
+  event.preventDefault();
+  console.log(("reading?"));
+  let referenceId = $("#home_one_day_pass_type").val();
+  let amount = $("#home_one_day_pass_amount").val();
+}); */

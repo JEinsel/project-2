@@ -1,22 +1,22 @@
 $(document).ready(function() {
   paypal
     .Buttons({
-      createOrder: function(data, actions) {
+      createOrder: function (data, actions) {
         return actions.order.create({
           // eslint-disable-next-line camelcase
           purchase_units: [
             {
               // eslint-disable-next-line camelcase
-              reference_id: "TEST_PRODUCT_01",
+              reference_id: $(".type").text(),
               amount: {
-                value: "0.01"
+                value: parseFloat($(".amount").text())
               }
             }
           ]
         });
       },
       onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
+        return actions.order.capture().then(function (details) {
           alert("Transaction completed by " + details.payer.name.given_name);
           console.log(data);
           console.log(details);

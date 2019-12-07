@@ -1,4 +1,5 @@
-const express = require("express");
+//We are not using APIs, do NOT uncomment this!
+/* const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
@@ -28,4 +29,4 @@ router.delete("/api/users/:id", function(req, res) {
   });
 });
 
-module.exports = router;
+module.exports = router; */
