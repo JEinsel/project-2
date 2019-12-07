@@ -1,9 +1,12 @@
+@import "./animate.css";
+@import "./hover.css";
+
 body {
   margin: 0;
   background: #212121; 
   font-family: 'Montserrat', sans-serif;
   color: #ffffff;
-
+overflow-x: hidden;
 }
 .window-black {
   background: #121212;
