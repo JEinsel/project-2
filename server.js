@@ -59,7 +59,7 @@ app.use(feAmenities);
 
 const payments = require("./controller/admin/payments-controller");
 const paypal = require("./controller/admin/paypal-controller");
-const websiteController = require("./controller/admin/website-controller");
+const websiteController = require("./controller/website-controller");
 
 app.use(websiteController);
 app.use(paypal);

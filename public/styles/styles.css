@@ -1,6 +1,9 @@
 body {
   margin: 0;
   background: #212121; 
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+
 }
 .window-black {
   background: #121212;
@@ -119,7 +122,6 @@ video {
 }
   h1 {
     font-size: 3rem;
-    text-transform: uppercase;
     margin-top: 0;
     letter-spacing: .3rem;
   }
@@ -142,10 +144,6 @@ video {
   a {
     display: inline-block;
     color: #fff;
-    text-decoration: none;
-    background:rgba(0,0,0,0.5);
-    padding: .5rem;
-    transition: .6s background; 
   }
   a:hover{
     background: white(0,0,0,0.9);
@@ -169,12 +167,6 @@ video {
   background-size:cover;
   background-position:center center;
   background-attachment:fixed;
-}
-
-.list{color: white;
-  font-size:60px;
-  margin-top:100px;
-  text-align:center;
 }
 
 #About{
@@ -223,9 +215,33 @@ p{
 #contact {
   color: white;
 } 
+.kalam {
+  font-family: 'Kalam', cursive;
+}
+.bad-script {
+  font-family: 'Bad Script', cursive;
+}
+.title {
+  color: white;
+  font-size:60px;
+  margin-top:100px;
+  text-align:center;
+}
  
 #amenities {
   background: url("https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Fitness/Articles/Twice+a+Day/man+working+out-carousel.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#about {
+  background: url("/images/bg-2.jpg") top right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#slogan {
+  background: url("/images/bg-1.jpg") top right;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -238,6 +254,83 @@ p{
   background: #121212;
 }
 
+.card-header, .card-footer {
+  background: #212121;
+}
+
+.social {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.fb {
+  background: #3b5998;
+}
+.fb a:hover {
+  color: #3b5998;  
+  background: white;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.twitter {
+  background: #55acee;
+}
+.twitter a:hover {
+  color: #55acee;  
+  background: white;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.google {
+  background: #dc4e41;
+}
+.google a:hover {
+  color: #dc4e41;  
+  background: white;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.pinterest {
+  background: #bd081c;
+}
+.pinterest a:hover {
+  color: #bd081c;  
+  background: white;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.github {
+  background: #00405d;
+}
+.github a:hover {
+  color: #00405d;  
+  background: white;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+  text-align: center;
+}
+ 
  
 
 
