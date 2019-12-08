@@ -23,6 +23,7 @@ overflow-x: hidden;
   background: #ff6d00!important;
   color: #ffffff!important;
   border: #ff6d00!important;
+  
 }
 .btn-orange:hover {
   background: #ff9e40!important;
@@ -221,6 +222,9 @@ p{
 .kalam {
   font-family: 'Kalam', cursive;
 }
+.expletus {
+  font-family: 'Expletus Sans', cursive;
+}
 .bad-script {
   font-family: 'Bad Script', cursive;
 }
@@ -247,6 +251,13 @@ p{
   background: url("/images/bg-1.jpg") top right;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+#call-for-action {
+  background: url("/images/bg-4.jpg") top right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-shadow: 3px 3px 3px #12121270;
 }
 
 .navbar a {
@@ -333,6 +344,25 @@ p{
   border-radius: 50%;
   text-align: center;
 }
+
+.img-thumbnail {
+  padding: .1rem;
+  background-color: #ff6d00;
+  border: 1px solid #ff6d00;
+  border-radius: .25rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.badge {
+  float: right;
+  background: #ff9e40!important;
+}
+
+.display-1 small {
+  font-size: 40%!important;
+}
+
  
  
 
