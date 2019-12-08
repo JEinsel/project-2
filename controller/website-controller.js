@@ -8,7 +8,7 @@ const session = require("express-session");
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 3000000 },
+    cookie: { maxAge: 30000000 },
     secret: "wootwoot"
   })
 );
@@ -37,6 +37,7 @@ router.get("/", function(req, res) {
       inst = result;
     })
     .then(function(result) {
+      console.log(result);
       res.render("index", {
         layout: "main",
         title1: "Welcome to N.E. Gym",
@@ -52,7 +53,13 @@ router.get("/", function(req, res) {
 });
 
 //Get one
-router.get("/admin/amenities/:id", function(req, res) {});
+router.get("/about", function(req, res) {
+  res.render("about", {
+    title: "About N.E. Gym",
+    text:
+      "Spicy jalapeno bacon ipsum dolor amet beef salami turducken shankle chicken sirloin corned beef leberkas biltong pork loin fatback. Short ribs burgdoggen beef ribs tongue beef chicken landjaeger salami pastrami sausage biltong filet mignon tri-tip porchetta. Tongue porchetta prosciutto, short ribs jowl picanha boudin tail. Pastrami doner frankfurter drumstick meatball picanha ham bacon."
+  });
+});
 
 //Post one
 router.post("/admin/amenities", function(req, res) {});

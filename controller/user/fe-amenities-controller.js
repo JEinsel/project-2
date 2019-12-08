@@ -8,7 +8,7 @@ const router = express.Router();
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 300000 },
     secret: "wootwoot"
   })
 );
@@ -19,17 +19,13 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 router.get("/amenities", function(req, res) {
-  if (req.user) {
-    db.Amenities.findAll().then(function(result) {
-      res.render("amenities", {
-        title: "Amenities",
-        results: result,
-        user: req.user
-      });
+  db.Amenities.findAll().then(function(result) {
+    res.render("amenities", {
+      title: "Amenities",
+      results: result,
+      user: req.user
     });
-  } else {
-    res.redirect("/login");
-  }
+  });
 });
 
 module.exports = router;
