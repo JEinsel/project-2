@@ -7,7 +7,8 @@ $(document).ready(function() {
     let oldUserObj = {
       fName: $("#user_f_name").text(),
       lName: $("#user_l_name").text(),
-      email: $("#user_email").text()
+      email: $("#user_email").text(),
+      memberLvl: $("#user_lvl").text()
     };
     $("#user_f_name").html(`
       <input type="text" value="${oldUserObj.fName}" name="new_user_f_name" id="new_user_f_name" class="form-control">
@@ -17,6 +18,16 @@ $(document).ready(function() {
     `);
     $("#user_email").html(`
     <input type="text" value="${oldUserObj.email}" name="new_user_email" id="new_user_email" class="form-control">
+    `);
+    $("#user_lvl").html(`
+    <select  name="new_user_lvl" id="new_user_lvl" class="form-control">
+    <option value="${oldUserObj.memberLvl}" selected>${oldUserObj.memberLvl}</option>
+    <option value="1">1 = basic member</option>
+    <option value="2">2 = gold member</option>
+    <option value="3">3 = platinum member</option>
+    <option value="4">4 = moderator</option>
+    <option value="5">5 = administrator</option>
+    </select>
     `);
     $("#save_btn_placeholder").html(
       // eslint-disable-next-line quotes
@@ -36,6 +47,9 @@ $(document).ready(function() {
         .val()
         .trim(),
       email: $("#new_user_email")
+        .val()
+        .trim(),
+      memberLvl: $("#new_user_lvl")
         .val()
         .trim()
     };

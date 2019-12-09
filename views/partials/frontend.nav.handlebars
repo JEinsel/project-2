@@ -23,7 +23,10 @@
           <a class="nav-link" href="/instructors">Instructors</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/trial">Trial</a>
+          <a class="nav-link" href="/memberships">Memberships</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-warning hvr-shutter-out-horizontal" href="/trial">Trial</a>
         </li>
       </ul>
 
@@ -34,7 +37,7 @@
       {{/if}}
       {{#unless user}}
       <span class="navbar-text">
-        <a href="/login">Login</a> / <a href="/signin">Sign In</a>
+        <a href="/login">Login</a> / <a href="/signup">Sign Up</a>
       </span>
       {{/unless}}
       {{#ifMore user.memberLvl 4}}
