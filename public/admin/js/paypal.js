@@ -1,7 +1,7 @@
 $(document).ready(function() {
   paypal
     .Buttons({
-      createOrder: function (data, actions) {
+      createOrder: function(data, actions) {
         return actions.order.create({
           // eslint-disable-next-line camelcase
           purchase_units: [
@@ -16,8 +16,10 @@ $(document).ready(function() {
         });
       },
       onApprove: function(data, actions) {
-        return actions.order.capture().then(function (details) {
-          alert("Transaction completed by " + details.payer.name.given_name);
+        return actions.order.capture().then(function(details) {
+          $("#payment-body").text(
+            "Transaction completed by " + details.payer.name.given_name
+          );
           console.log(data);
           console.log(details);
           // Call your server to save the transaction
@@ -39,6 +41,16 @@ $(document).ready(function() {
             }
           });
         });
+      },
+      onCancel: function (data) {
+        // Show a cancel page, or return to cart
+      },
+
+      onError: function (err) {
+        // Show an error page here, when an error occurs
+        if (err) {
+          throw err;
+        }
       }
     })
     .render("#paypal-button-container");

@@ -190,3 +190,8 @@ body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
 }
+
+.bg-grayblue {
+  background: #c1d5e0;
+  border: 2px solid #90a4ae;
+}

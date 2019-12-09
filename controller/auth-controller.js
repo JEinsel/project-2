@@ -7,7 +7,7 @@ const router = express.Router();
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 30000000 },
+    cookie: { maxAge: 3600000 },
     secret: "wootwoot"
   })
 );
@@ -20,7 +20,7 @@ router.use(passport.session());
 
 router.get("/", function(req, res) {
   res.render("index", {
-    user: req.user
+    //user: req.user
   });
 });
 

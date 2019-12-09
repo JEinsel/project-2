@@ -1,15 +1,32 @@
 <script
-  src="https://www.paypal.com/sdk/js?client-id=AeKbPtgoqX8lDTWbDhfwep5c2-5TTjVHhVsPFjVJms_mHUyGHFCbqGmkhesnGCwG6wjneDOnOI8YISGn"></script>
+  src="https://www.paypal.com/sdk/js?client-id=AeKbPtgoqX8lDTWbDhfwep5c2-5TTjVHhVsPFjVJms_mHUyGHFCbqGmkhesnGCwG6wjneDOnOI8YISGn" async></script>
 
-<div class="type">
-  {{type}}
-</div>
-<div class="amount">
-  {{amount}}
-</div>
 
-<div id="paypal-button-container"></div>
+{{> frontend.nav}}
 
+{{!-- pay --}}
+<section class="container-fluid d-flex p-2 justify-content-center align-items-center vh-100" id="about">
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-4 ">
+        <div class="card text-white bg-orange-80 mb-3 animated bounceInDown slow  text-center">
+          <div class="card-header h3">{{type}}</div>
+          <div class="card-body" id="payment-body">
+            <h4 class="text-left">
+              Item: <span class="type">{{type}}</span>
+            </h4>
+            <h4 class="text-left">
+              Price: <span class="amount">{{amount}}</span>
+            </h4>
+            <div id="paypal-button-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{> frontend.footer}}
 
 <script src="/admin/js/paypal.js"></script>
 
