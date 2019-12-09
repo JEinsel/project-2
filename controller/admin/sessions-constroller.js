@@ -114,6 +114,14 @@ router.put("/admin/sessions/:id", function(req, res) {
 //Delete one
 router.delete("/admin/sessions/:id", function(req, res) {
   if (req.user && req.user.memberLvl >= 4) {
+    db.Session.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result) {
+      res.json(result);
+      res.redirect("/admin/sessions");
+    });
   } else {
     res.redirect("/");
   }

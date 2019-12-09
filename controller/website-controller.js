@@ -150,13 +150,4 @@ router.get("/memberships", function(req, res) {
   });
 });
 
-//Post one
-router.post("/admin/amenities", function(req, res) {});
-
-//Update one
-router.put("/admin/amenities/:id", function(req, res) {});
-
-//Delete one
-router.delete("/admin/amenities/:id", function(req, res) {});
-
 module.exports = router;
