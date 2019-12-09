@@ -74,7 +74,7 @@ router.get("/trial", function(req, res) {
 
 router.post("/send", function(req, res) {
   //gmail way
-  const smtpTransport = nodemailer.createTransport({
+  /* const smtpTransport = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
     port: 587,
@@ -82,6 +82,15 @@ router.post("/send", function(req, res) {
     auth: {
       user: process.env.email,
       pass: process.env.appPwd //app pwd
+    }
+  }); */
+
+  const smtpTransport = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    auth: {
+      user: "abbey.dickinson@ethereal.email",
+      pass: "cvAXRaN4MqcDYvug3Z"
     }
   });
 
@@ -95,13 +104,13 @@ router.post("/send", function(req, res) {
   smtpTransport.sendMail(mailOptions, function(error, response) {
     if (error) {
       console.log(error);
-      res.render("common",{
+      res.render("common", {
         title: "Something went wrong :(",
         text: error
       });
     } else {
       console.log(`Message sent: ${response.messageId}`);
-      res.render("common",{
+      res.render("common", {
         title: "We sent you free class pass",
         text: "Please, check your email"
       });

@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Class.associate = function(models) {
     models.Class.belongsTo(models.Category);
-    models.Class.belongsTo(models.Instructor);
+    models.Class.hasOne(models.Session);
   };
   return Class;
 };
