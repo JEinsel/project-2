@@ -41,7 +41,14 @@ router.get("/admin", function(req, res) {
         users = result;
       });
     let sum;
-    db.Payment.sum("amount").then(res => {
+    db.Payment.sum("amount", {
+      where: {
+        createdAt: {
+          [Op.gt]: today,
+          [Op.lt]: now
+        }
+      }
+    }).then(res => {
       sum = res;
     });
     db.Payment.findAndCountAll({

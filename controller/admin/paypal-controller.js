@@ -4,6 +4,7 @@ const router = express.Router();
 const db = require("../../models");
 const flash = require("connect-flash");
 const session = require("express-session");
+const nodemailer = require("nodemailer");
 
 // Flash
 router.use(
@@ -50,6 +51,29 @@ router.post("/prepayment", function(req, res) {
 //New admin user
 router.post("/paypal", function(req, res) {
   if (req.user) {
+    const smtpTransport = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      auth: {
+        user: "abbey.dickinson@ethereal.email",
+        pass: "cvAXRaN4MqcDYvug3Z"
+      }
+    });
+    const mailOptions = {
+      to: req.body.payerEmail,
+      subject: req.body.referenceId,
+      text: `Hello, ${req.user.fName} ${req.user.lName}! 
+    Your order #${req.body.orderID} is successfuly completed!
+    You paid: $${req.body.amount}
+    Thank You!`
+    };
+    smtpTransport.sendMail(mailOptions, function(error, response) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(`Message sent: ${response.messageId}`);
+      }
+    });
     db.Payment.create({
       paymentId: req.body.orderID,
       payerID: req.body.payerID,
