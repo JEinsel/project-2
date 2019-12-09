@@ -66,8 +66,8 @@ router.get("/about", function(req, res) {
 //Trial
 router.get("/trial", function(req, res) {
   res.render("trial", {
-    title: "Get Free Free Class Pass",
-    text: "We will send you Free Class Pass by email",
+    title: "Get Your Free One Day Pass",
+    text: "We will send you Free One Day Pass to your email",
     user: req.user
   });
 });
@@ -87,9 +87,9 @@ router.post("/send", function(req, res) {
 
   const mailOptions = {
     to: req.body.email,
-    subject: "Your Free Class Pass Is Here",
+    subject: "Your Free One Day Pass Is Here!",
     text: `Hello, ${req.body.fname} ${req.body.lname}! 
-    This is your Free Class Pass!`
+    This is your One Dat Pass!Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
   };
 
   smtpTransport.sendMail(mailOptions, function(error, response) {
@@ -130,6 +130,14 @@ router.get("/instructors", function(req, res) {
       results: result,
       user: req.user
     });
+  });
+});
+
+//Memberships
+router.get("/memberships", function(req, res) {
+  res.render("memberships", {
+    title: "Memberships",
+    user: req.user
   });
 });
 
