@@ -24,4 +24,23 @@ $(document).ready(function() {
   $(document).on("click", "#cancel", function() {
     location.reload();
   });
+
+  function include(file) {
+    //const script = document.createElement("script");
+    const script = $("<script>");
+    script.attr("src", file);
+    script.attr("type", "text/javascript");
+    script.attr("defer", "true");
+    $(document)
+      .find("head")
+      .append(script);
+  }
+
+  include("/admin/js/amenities.js");
+  include("/admin/js/instructors.js");
+  include("/admin/js/classes.js");
+  include("/admin/js/categories.js");
+  include("/admin/js/admins.js");
+  include("/admin/js/users.js");
+  include("/admin/js/sessions.js");
 });

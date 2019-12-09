@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const exphbs = require("express-handlebars");
+const path = require("path");
 
 const hbs = exphbs.create({
   defaultLayout: "main",
@@ -39,6 +40,14 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(
+  "/css",
+  express.static(path.join(__dirname, "/node_modules/tail.datetime/css"))
+);
+app.use(
+  "/js",
+  express.static(path.join(__dirname, "/node_modules/tail.datetime/js"))
+);
 
 // Handlebars
 app.engine("handlebars", hbs.engine);
@@ -51,6 +60,8 @@ const instructorsRoutes = require("./controller/admin/instructors-controller");
 const classesRoutes = require("./controller/admin/classes-controller");
 const catRoutes = require("./controller/admin/categories-controller");
 const usersRoutes = require("./controller/admin/users-controller");
+const classSessions = require("./controller/admin/sessions-constroller");
+
 const feAmenities = require("./controller/user/fe-amenities-controller");
 const feMemberships = require("./controller/user/fe-memberships-controller");
 const feClasses = require("./controller/user/fe-classes-controller");
@@ -72,6 +83,7 @@ app.use(instructorsRoutes);
 app.use(classesRoutes);
 app.use(catRoutes);
 app.use(usersRoutes);
+app.use(classSessions);
 
 //Auth routes
 //const userRoutes = require("./controller/user-controller");

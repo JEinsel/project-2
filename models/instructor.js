@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Instructor.associate = function(models) {
     models.Instructor.hasMany(models.user);
-    models.Instructor.hasMany(models.Class);
+    models.Instructor.hasMany(models.Session);
   };
   return Instructor;
 };
