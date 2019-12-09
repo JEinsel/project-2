@@ -4,11 +4,12 @@ const router = express.Router();
 const db = require("../models");
 const flash = require("connect-flash");
 const session = require("express-session");
+const nodemailer = require("nodemailer");
 
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 30000000 },
+    cookie: { maxAge: 3600000 },
     secret: "wootwoot"
   })
 );
@@ -21,7 +22,7 @@ router.use(passport.session());
 
 //Amenities routes
 
-//Get all
+//Homepage
 router.get("/", function(req, res) {
   let amenities;
   let inst;
@@ -52,12 +53,83 @@ router.get("/", function(req, res) {
     });
 });
 
-//Get one
+//Get about
 router.get("/about", function(req, res) {
-  res.render("about", {
+  res.render("common", {
     title: "About N.E. Gym",
     text:
-      "Spicy jalapeno bacon ipsum dolor amet beef salami turducken shankle chicken sirloin corned beef leberkas biltong pork loin fatback. Short ribs burgdoggen beef ribs tongue beef chicken landjaeger salami pastrami sausage biltong filet mignon tri-tip porchetta. Tongue porchetta prosciutto, short ribs jowl picanha boudin tail. Pastrami doner frankfurter drumstick meatball picanha ham bacon."
+      "Spicy jalapeno bacon ipsum dolor amet beef salami turducken shankle chicken sirloin corned beef leberkas biltong pork loin fatback. Short ribs burgdoggen beef ribs tongue beef chicken landjaeger salami pastrami sausage biltong filet mignon tri-tip porchetta. Tongue porchetta prosciutto, short ribs jowl picanha boudin tail. Pastrami doner frankfurter drumstick meatball picanha ham bacon.",
+    user: req.user
+  });
+});
+
+//Trial
+router.get("/trial", function(req, res) {
+  res.render("trial", {
+    title: "Get Free Free Class Pass",
+    text: "We will send you Free Class Pass by email",
+    user: req.user
+  });
+});
+
+router.post("/send", function(req, res) {
+  //gmail way
+  const smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: true,
+    auth: {
+      user: process.env.email,
+      pass: process.env.appPwd //app pwd
+    }
+  });
+
+  const mailOptions = {
+    to: req.body.email,
+    subject: "Your Free Class Pass Is Here",
+    text: `Hello, ${req.body.fname} ${req.body.lname}! 
+    This is your Free Class Pass!`
+  };
+
+  smtpTransport.sendMail(mailOptions, function(error, response) {
+    if (error) {
+      console.log(error);
+      res.render("common",{
+        title: "Something went wrong :(",
+        text: error
+      });
+    } else {
+      console.log(`Message sent: ${response.messageId}`);
+      res.render("common",{
+        title: "We sent you free class pass",
+        text: "Please, check your email"
+      });
+    }
+  });
+});
+
+//Get classes
+router.get("/classes", function(req, res) {
+  db.Class.findAll({ include: [db.Category] }).then(function(result) {
+    res.render("classes", {
+      layout: "main",
+      title: "Classes",
+      results: result,
+      user: req.user
+    });
+  });
+});
+
+//Get instructors
+router.get("/instructors", function(req, res) {
+  db.Instructor.findAll({ include: [db.Class] }).then(function(result) {
+    res.render("instructors", {
+      layout: "main",
+      title: "Instructors",
+      results: result,
+      user: req.user
+    });
   });
 });
 

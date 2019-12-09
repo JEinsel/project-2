@@ -8,7 +8,7 @@ const session = require("express-session");
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 30000000 },
+    cookie: { maxAge: 3600000 },
     secret: "wootwoot"
   })
 );
@@ -20,11 +20,12 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 // paypal
-router.get("/paypal", function (req, res) {
+router.get("/paypal", function(req, res) {
   if (req.user) {
     res.render("payments/payment", {
       layout: "main",
-      userId: req.user.id
+      userId: req.user.id,
+      user: req.user
     });
   } else {
     res.redirect("/login");
@@ -32,13 +33,14 @@ router.get("/paypal", function (req, res) {
 });
 
 // paypal
-router.post("/prepayment", function (req, res) {
+router.post("/prepayment", function(req, res) {
   if (req.user) {
     res.render("payments/payment", {
       layout: "main",
       userId: req.user.id,
-      type: req.body.home_one_day_pass_type,
-      amount: req.body.home_one_day_pass_amount
+      type: req.body.type,
+      amount: req.body.amount,
+      user: req.user
     });
   } else {
     res.redirect("/login");
@@ -46,7 +48,7 @@ router.post("/prepayment", function (req, res) {
 });
 
 //New admin user
-router.post("/paypal", function (req, res) {
+router.post("/paypal", function(req, res) {
   if (req.user) {
     db.Payment.create({
       paymentId: req.body.orderID,
@@ -56,7 +58,7 @@ router.post("/paypal", function (req, res) {
       status: req.body.status,
       referenceId: req.body.referenceId,
       userId: req.user.id
-    }).then(function (result) {
+    }).then(function(result) {
       console.log(result);
       if (req.body.status === "COMPLETED") {
         res.redirect("/success");
@@ -69,24 +71,28 @@ router.post("/paypal", function (req, res) {
   }
 });
 // success
-router.get("/success", function (req, res) {
+router.get("/success", function(req, res) {
   if (req.user) {
-    res.render("payments/success", {
+    res.render("common", {
       layout: "main",
       userId: req.user.id,
-      message: "success!!!"
+      title: "Thank you for your purchase!",
+      text: "Success!!!",
+      user: req.user
     });
   } else {
     res.redirect("/login");
   }
 });
 // success
-router.get("/cancel", function (req, res) {
+router.get("/cancel", function(req, res) {
   if (req.user) {
-    res.render("payments/error", {
+    res.render("common", {
       layout: "main",
       userId: req.user.id,
-      message: "error!!!"
+      title: "Something went wrong :(",
+      text: "Erro!!!",
+      user: req.user
     });
   } else {
     res.redirect("/login");

@@ -14,16 +14,20 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
         <h2 class="py-2">$9.99 per month</h2>
-        <a class="btn hvr-bounce-to-right" href="#">Join Now!</a>
+          <button class="btn hvr-bounce-to-left" id="home_basic_submit" type="button">Join Now!</button>
       </div>
     </div>
     <div class="card text-white bg-orange-light-80 mb-3 animated bounceInDown slow">
-      <div class="card-header h3">Gold Membership</div>
+      <div class="card-header h3">One Month Pass</div>
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
         <h2 class="py-2">$19.99 per month</h2>
-        <button class="btn hvr-radial-in">Join Now!</button>
+        <form action="/prepayment" method="POST">
+          <input type="hidden" name="type" value="One Month Pass">
+          <input type="hidden" name="amount" value="19.99">
+          <button class="btn hvr-bounce-to-top" type="submit">Join Now!</button>
+        </form>
       </div>
     </div>
     <div class="card text-white bg-orange-dark-80 mb-3 animated bounceInLeft slow">
@@ -33,9 +37,9 @@
           content.</p>
         <h2 class="py-2">$2.99</h2>
         <form action="/prepayment" method="POST">
-          <input type="hidden" name="home_one_day_pass_type" value="one_day_pass">
-          <input type="hidden" name="home_one_day_pass_amount" value="2.99">
-          <button class="btn hvr-bounce-to-left" type="submit" id="home_one_day_pass_submit">Join Now!</button>
+          <input type="hidden" name="type" value="One Day Pass">
+          <input type="hidden" name="amount" value="2.99">
+          <button class="btn hvr-bounce-to-left" type="submit">Join Now!</button>
         </form>
       </div>
     </div>

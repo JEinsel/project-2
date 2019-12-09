@@ -3,44 +3,22 @@
   <li class="breadcrumb-item">
     <a href="#">{{ title }}</a>
   </li>
-  <li class="breadcrumb-item active">Overview</li>
+  <li class="breadcrumb-item active">Happened today:</li>
 
 </ol>
-<!-- DataTables Example -->
+<div class="card-deck my-3">
+  <div class="card bg-grayblue mb-3 d-flex justify-content-center align-items-center">
+    <div class="card-body d-flex justify-content-center align-items-center h5">New registrations: {{ count }}</div>
+  </div>
+  <div class="card bg-grayblue mb-3 d-flex justify-content-center align-items-center">
+    <div class="card-body d-flex justify-content-center align-items-center h5">Payments processed: {{ paycount }}</div>
+  </div>
+  <div class="card bg-grayblue mb-3 d-flex justify-content-center align-items-center">
+    <div class="card-body d-flex justify-content-center align-items-center h5">Money made: ${{ money }}</div>
+  </div>
+</div>
 <div class="card mb-3">
   <div class="card-header">
     <i class="fas fa-table"></i>
-    This is table with data from "Example" Table. Josh, i you need to make this dashboard template pretty and functional </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Text</th>
-            <th>Body</th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <th>Id</th>
-            <th>Text</th>
-            <th>Body</th>
-          </tr>
-        </tfoot>
-        <tbody>
-          {{#each results}}
-          <tr>
-            
-            <td>{{ id }}</td>
-            <td>{{ text }}</td>
-            <td>{{ description }}</td>
-            
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="card-footer small text-muted">Last updated <span id="date"></span></div>
+    {{sess}} </div>
 </div>

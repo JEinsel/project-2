@@ -6,11 +6,12 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+const today = new Date().setHours(0, 0, 0, 0);
 
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 30000000 },
+    cookie: { maxAge: 3600000 },
     secret: "wootwoot"
   })
 );
@@ -24,12 +25,43 @@ router.use(passport.session());
 // Dashboard
 router.get("/admin", function(req, res) {
   if (req.user && req.user.memberLvl >= 4) {
-    db.Example.findAll({}).then(function(result) {
+    const now = new Date();
+    let users;
+
+    db.user
+      .findAndCountAll({
+        where: {
+          createdAt: {
+            [Op.gt]: today,
+            [Op.lt]: now
+          }
+        }
+      })
+      .then(function(result) {
+        users = result;
+      });
+    let sum;
+    db.Payment.sum("amount").then(res => {
+      sum = res;
+    });
+    db.Payment.findAndCountAll({
+      where: {
+        createdAt: {
+          [Op.gt]: today,
+          [Op.lt]: now
+        }
+      }
+    }).then(function(result) {
       res.render("admin/index", {
         layout: "admin",
-        title: "Dashboard homepage",
-        results: result,
-        user: req.user
+        sess: "expires in: " + req.session.cookie.maxAge / 1000 + "s",
+        title: "Dashboard",
+        newUsers: users.rows,
+        count: users.count,
+        user: req.user,
+        paycount: result.count,
+        payments: result.rows,
+        money: sum
       });
     });
   } else {

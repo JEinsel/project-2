@@ -29,6 +29,12 @@
           <td>Email</td>
           <td id="user_email">{{ results.email }}</td>
         </tr>
+        {{#ifMore user.memberLvl 6}}
+        <tr>
+          <td>Member level</td>
+          <td id="user_lvl">{{ results.memberLvl }}</td>
+        </tr>
+        {{/ifMore}}
       </table>
     </div>
   </div>

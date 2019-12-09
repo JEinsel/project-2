@@ -9,7 +9,7 @@ const session = require("express-session");
 // Flash
 router.use(
   session({
-    cookie: { maxAge: 30000000 },
+    cookie: { maxAge: 3600000 },
     secret: "wootwoot"
   })
 );
