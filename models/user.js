@@ -1,5 +1,5 @@
 /*
-User levels: 0 = basic, 1 = Gold, 2 = Platinum, 3 = One day Pass, 4 = Moderator, 5 = Administrator,  6 = Super administrator
+User levels: 0 = basic, 1 = Gold, 2 = Banned, 3 = One day Pass, 4 = Moderator, 5 = Administrator,  6 = Super administrator
 */
 
 const bcrypt = require("bcrypt");
