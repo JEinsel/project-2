@@ -93,7 +93,9 @@ body {
 .bg-orange-light-80 {
   background: #ff9e4080!important;
 }
-
+.bg-dark-80 {
+  background: #12121280!important;
+}
 .btn-dark {
   background: #212121!important;
   color: #ffffff90!important;
@@ -388,13 +390,17 @@ p{
   border: 1px solid #ff6d00;
 }
 .form-control:focus {
-  color: #ef106f;
-  background-color: #feeae9;
-  border-color: #ef106f50;
+  color: #ff6d00;
+  background-color: #12121250;
+  border-color: #ff6d0050;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #ef106f50;
+  box-shadow: 0 0 0 0.2rem #ff6d0050;
 }
- 
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #212121;
+  opacity: 1;
+}
 
 
 

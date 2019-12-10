@@ -142,6 +142,57 @@ router.get("/instructors", function(req, res) {
   });
 });
 
+//Get instructors
+router.get("/account", function(req, res) {
+  if (req.user) {
+    db.user
+      .findOne({
+        where: {
+          id: req.user.id
+        }
+      })
+      .then(function(result) {
+        //res.send(result);
+        res.render("account", {
+          layout: "main",
+          title: "Your Account",
+          results: result,
+          user: req.user
+        });
+      });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+//Update one
+router.put("/account", function(req, res) {
+  if (req.user) {
+    db.user
+      .update(
+        {
+          fName: req.body.fName,
+          lName: req.body.lName,
+          email: req.body.email
+        },
+        {
+          where: {
+            id: req.body.id
+          }
+        }
+      )
+      .then(function(result) {
+        res.render("account", {
+          layout: "main",
+          results: result,
+          user: req.user
+        });
+      });
+  } else {
+    res.redirect("/");
+  }
+});
+
 //Memberships
 router.get("/memberships", function(req, res) {
   res.render("memberships", {
