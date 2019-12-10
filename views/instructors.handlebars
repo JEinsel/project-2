@@ -19,6 +19,13 @@
         <h3 class="text-left text-orange">{{firstName}} {{lastName}} </h3>
         <hr class="bg-orange">
         <p>{{bio}}</p>
+        <h5 class="text-orange">Upcoming sessions</h5>
+        <hr class="bg-orange">
+        <ul class="list-inline">
+          {{#each Sessions}}
+          <li><span class="date">{{date}}</span></li>
+          {{/each}}
+        </ul>
       </div>
     </div>
     {{/each}}

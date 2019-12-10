@@ -103,7 +103,6 @@ router.post("/send", function(req, res) {
 
   smtpTransport.sendMail(mailOptions, function(error, response) {
     if (error) {
-      console.log(error);
       res.render("common", {
         title: "Something went wrong :(",
         text: error
@@ -132,7 +131,8 @@ router.get("/classes", function(req, res) {
 
 //Get instructors
 router.get("/instructors", function(req, res) {
-  db.Instructor.findAll({ include: [db.Class] }).then(function(result) {
+  db.Instructor.findAll({ include: [db.Session] }).then(function(result) {
+    //res.send(result);
     res.render("instructors", {
       layout: "main",
       title: "Instructors",
@@ -146,6 +146,14 @@ router.get("/instructors", function(req, res) {
 router.get("/memberships", function(req, res) {
   res.render("memberships", {
     title: "Memberships",
+    user: req.user
+  });
+});
+
+//Calendar
+router.get("/calendar", function(req, res) {
+  res.render("calendar", {
+    title: "Calendar",
     user: req.user
   });
 });

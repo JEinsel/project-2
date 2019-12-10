@@ -5,28 +5,15 @@ const path = require("path");
 
 const hbs = exphbs.create({
   defaultLayout: "main",
-  //custom helper
   helpers: {
     ifEq: function(a, b, opts) {
-      if (a === b) {
-        return opts.fn(this);
-      } else {
-        return opts.inverse(this);
-      }
+      return a === b ? opts.fn(this) : opts.inverse(this);
     },
     ifMore: function(a, b, opts) {
-      if (a >= b) {
-        return opts.fn(this);
-      } else {
-        return opts.inverse(this);
-      }
+      return a >= b ? opts.fn(this) : opts.inverse(this);
     },
     ifLess: function(a, b, opts) {
-      if (a <= b) {
-        return opts.fn(this);
-      } else {
-        return opts.inverse(this);
-      }
+      return a <= b ? opts.fn(this) : opts.inverse(this);
     }
   }
 });
