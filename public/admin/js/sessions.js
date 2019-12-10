@@ -53,4 +53,22 @@ $(document).ready(function() {
       data: editedSessionObj
     }).then(() => location.reload());
   });
+
+  $("#delete_session").on("click", function(event) {
+    event.preventDefault();
+    if (
+      confirm(
+        "are you sure you want to delete the item with ID " +
+          $("#session_id").text() +
+          " from databbase?"
+      )
+    ) {
+      $.ajax({
+        url: "/admin/sessions/" + $("#session_id").text(),
+        type: "DELETE"
+      }).then(() => (location.href = "/admin/sessions"));
+    } else {
+      console.log("doing nothing");
+    }
+  });
 });

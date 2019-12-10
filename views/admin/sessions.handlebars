@@ -54,28 +54,25 @@
   
       <div class="form-group">
         <label for="class">Class</label>
-        <select name="class_session" id="class_session" class="form-control" aria-describedby="class_session">
+        <select id="session_class" class="form-control">
           <option value="0">Select an option</option>
            {{#each classes}}
             <option value="{{ id }}">{{ name }}</option>
            {{/each}}
         </select>
-        <small id="class_session" class="form-text text-muted"></small>
       </div>
       <div class="form-group">
         <label for="instructor">Instructor</label>
-        <select name="inst_session" id="inst_session" class="form-control" aria-describedby="inst_session">
+        <select id="session_inst" class="form-control">
           <option value="0">Select an option</option>
            {{#each instructor}}
             <option value="{{ id }}">{{ firstName }} {{ lastName }}</option>
            {{/each}}
         </select>
-        <small id="inst_session" class="form-text text-muted"></small>
       </div>
       <div class="form-group">
-        <label for="instructor">Date</label>
-        <input type="text" name="class_date" class="tail-datetime-field form-control" id="class_date">
-        <small id="inst_session" class="form-text text-muted"></small>
+        <label for="session_date">Date</label>
+        <input type="text" class="tail-datetime-field form-control" id="session_date">
       </div>
       <button type="submit" id="create_session" class="btn btn-dark">Submit</button>
     </form>
