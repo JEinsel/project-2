@@ -21,7 +21,7 @@ const hbs = exphbs.create({
 const db = require("./models");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8100;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));

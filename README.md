@@ -1,59 +1,53 @@
-[![Build Status](https://travis-ci.com/sdanyalk/auth-project-two.svg?branch=master)](https://travis-ci.com/sdanyalk/auth-project-two)
+# Project 2: N.E.Gym
 
-# Authentication for Project Two
-This project showcases how to add authentication using `passport.js` library. Template for this project is the starter template given for Project Two.
+![N.E.Gym](public/images/githubtpl.png)
 
-`passport.js` provides many authentication strategies. This project makes use of **local** username and password authentication strategy. More details about this strategy can be found [here](http://www.passportjs.org/packages/passport-local/).
 
-Passport Local strategy expects you to have username and password stored in your database. In this project I'm using email address as a username. The passwords are stored as a hash using **bcrypt**.
+### Group Project 2 of 3 for University of Arizona Cooding Bootcamp
+**Team Death Eaters aka JIRC**
+
+Members:
+* Joshua Einsel - team leader
+* Irina Kudosova - front/back end
+* Chrisitna Sosa - front end
+* Raymond Terry - back end
 
 ---
 
-## Installation
+This application is simple a Content Management System (CMS) that performs CRUD operations with given tools. 
+Chosen Gym as a theme, this flexible application can apply to any business.
 
-1. Clone this repository.
-    ```
-    git clone https://github.com/sdanyalk/auth-project-two.git
-    ```
-1. Navigate into the cloned directory.
-    ```
-    cd auth-project-two
-    ```
-1. Install Nodejs dependencies.
-    ```
-    npm install
-    ```
-1. Create mysql database using the `schema.sql` file, located below.
-    ```
-    /models/schema.sql
-    ```
-1. Update database username and password configuration in `config.json` file, located below.
-    ```
-    /config/config.json
-    ```
-1. In the root directory of the project, start the server.
-    ```
-    node server.js
-    ```
-1. In your browser navigate to the following page.
-    ```
-    http://localhost:3000
-    ```
+It has 2 different level of purchase:
+*   Subscription
+*   *ne-time purchase
+
+It has 2 different levels of Users:
+*   Regular User
+*   Administrator User
+
+It has 2 different levels of front-end views: 
+*   User view 
+*   Administrator view
+
 ---
 
-## NPM Packages
+### Tecnologies/NPM Packages:
 
-| Package | Description |
-| ----------- | ----------- |
-| `express` | [Express](https://www.npmjs.com/package/express) |
-| `express-handlebars` | [Express Handlebars](https://www.npmjs.com/package/express-handlebars) |
-| `mysql2` | [Node MySql 2](https://www.npmjs.com/package/mysql2) |
-| `sequelize` | [Sequelize](https://www.npmjs.com/package/sequelize) |
-| `passport` | [Passport](https://www.npmjs.com/package/passport) |
-| `passport-local` | [Passport Local Strategy](https://www.npmjs.com/package/passport-local) |
-| `bcrypt` | [BCrypt](https://www.npmjs.com/package/bcrypt) |
-| `connect-flash` | [Connect Flash for Express](https://www.npmjs.com/package/connect-flash) |
-| `dotenv` | [Dotenv](https://www.npmjs.com/package/dotenv) |
+*   Passport authentication by Danyal K. https://github.com/sdanyalk/auth-project-two
+*   Node.js
+*   Express
+*   Sequelize
+*   Handlebars
+*   MySQL
+*   JavaScript
+*   jQuery
+*   Passport
+*   PayPal
+*   Nodemailer
+*   Tail.DateTime.js
+*   Moment.js
+*   Datatables.js
+*   Google Calendar
 
 ---
 
@@ -61,10 +55,10 @@ Passport Local strategy expects you to have username and password stored in your
 
 This project is deployed on Heroku. The link to web app is:
 
-[https://auth-project-two.herokuapp.com/](https://auth-project-two.herokuapp.com/)
+[https://ircj-project-2.herokuapp.com/](https://ircj-project-2.herokuapp.com/)
 
 ---
 
-## License
+**Optimized for 1920x1080 screen resolution and Google Chrome Version 78**
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+_Made for University of Arizona Coding Bootcamp, Week-16, November 2019_
